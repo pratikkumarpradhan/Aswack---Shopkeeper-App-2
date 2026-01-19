@@ -13,6 +13,7 @@ configurations {
 }
 
 android {
+    namespace 'com.avdhootsolutions.aswack_shopkeeper'
     compileSdk 32
 
     defaultConfig {

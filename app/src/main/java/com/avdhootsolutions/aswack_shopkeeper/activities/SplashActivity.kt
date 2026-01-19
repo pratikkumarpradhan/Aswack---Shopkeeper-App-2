@@ -31,28 +31,24 @@ class SplashActivity : AppCompatActivity() {
                 val alert = builder.create()
                 alert.show()
             } else {
-                /*if (Utils.getPrefData(Prefrences.USER_PROFILE_ID, SplashScreen.this) != null && !Utils.getPrefData(Prefrences.USER_PROFILE_ID, SplashScreen.this).equals("")) {
-                            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                            startActivity(i);
-                            finish();
-                        } else {
-                            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                            startActivity(i);
-                            finish();
-                        }*/
+                // TEMPORARY: Bypass login authentication - go directly to HomeActivity
+                val i = Intent(applicationContext, HomeActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(i)
+                finish()
 
-                            if (Helper().getLoginData(this).mobile.isNullOrEmpty()){
-                                val i = Intent(applicationContext, LoginActivity::class.java)
-                                startActivity(i)
-                                finish()
-                            }else{
-                                val i = Intent(applicationContext, HomeActivity::class.java)
-                                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                startActivity(i)
-                                finish()
-                            }
-
-
+                /* ORIGINAL CODE - Commented out for temporary login bypass
+                if (Helper().getLoginData(this).mobile.isNullOrEmpty()){
+                    val i = Intent(applicationContext, LoginActivity::class.java)
+                    startActivity(i)
+                    finish()
+                }else{
+                    val i = Intent(applicationContext, HomeActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                    finish()
+                }
+                */
             }
         }, 1000)
     }
