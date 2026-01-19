@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".activities.CompanySignUpActivity">
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_15sdp"
+        android:text="@string/companyname"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ivEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_edit_square"
+        android:text="@string/edit"
+        android:textSize="@dimen/_13ssp"
+        android:drawablePadding="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/_20sdp">
+
+    </TextView>-
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/cardredious"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:paddingBottom="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/lblregistration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="@string/registration"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            </TextView>
+
+
+
+            <!--<Spinner
+                android:id="@+id/ddbcompanytype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/lblregistration"
+                app:layout_constraintStart_toStartOf="@id/lblregistration"
+                app:layout_constraintTop_toBottomOf="@id/lblregistration" />
+-->
+
+            <TextView
+                android:id="@+id/lblcname"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_name"
+                app:layout_constraintEnd_toEndOf="@id/lblregistration"
+                app:layout_constraintStart_toStartOf="@id/lblregistration"
+                app:layout_constraintTop_toBottomOf="@id/lblregistration" />
+
+
+            <EditText
+                android:id="@+id/etcname"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/lblcname"
+                app:layout_constraintTop_toBottomOf="@id/lblcname" />
+
+            <TextView
+                android:id="@+id/lblcownername"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_owner_name"
+                app:layout_constraintEnd_toEndOf="@id/etcname"
+                app:layout_constraintStart_toStartOf="@id/etcname"
+                app:layout_constraintTop_toBottomOf="@id/etcname" />
+
+            <EditText
+                android:id="@+id/etcownername"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/lblcownername"
+                app:layout_constraintTop_toBottomOf="@id/lblcownername" />
+
+            <TextView
+                android:id="@+id/lblclogo"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_logo"
+                app:layout_constraintEnd_toEndOf="@id/etcownername"
+                app:layout_constraintStart_toStartOf="@id/etcownername"
+                app:layout_constraintTop_toBottomOf="@id/etcownername" />
+
+            <TextView
+                android:id="@+id/lblcupload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bluebackandwhitetext"
+                android:drawableLeft="@drawable/ic_upload"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="@string/upload"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/lblclogo"
+                app:layout_constraintStart_toStartOf="@+id/lblclogo"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+                android:layout_marginTop="@dimen/_5sdp"
+                />
+
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:drawableLeft="@drawable/ic_upload"
+                android:fontFamily="@font/poppins_medium"
+               android:scaleType="centerCrop"
+                android:text="@string/upload"
+                app:layout_constraintEnd_toEndOf="@+id/lblclogo"
+                app:layout_constraintStart_toStartOf="@+id/lblclogo"
+                app:layout_constraintTop_toBottomOf="@+id/lblclogo"
+                />
+
+            <TextView
+                android:id="@+id/lblclandline"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/landline_number"
+                app:layout_constraintEnd_toEndOf="@id/lblcupload"
+                app:layout_constraintStart_toStartOf="@id/lblcupload"
+                app:layout_constraintTop_toBottomOf="@id/lblcupload" />
+
+            <EditText
+                android:id="@+id/etclandline"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_landline"
+                android:drawablePadding="@dimen/_10sdp"
+                android:inputType="number"
+                android:maxLength="15"
+                app:layout_constraintStart_toStartOf="@id/lblclandline"
+                app:layout_constraintTop_toBottomOf="@id/lblclandline" />
+
+            <TextView
+                android:id="@+id/lblcmobileno"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_mobile_number"
+                app:layout_constraintEnd_toEndOf="@id/etclandline"
+                app:layout_constraintStart_toStartOf="@id/etclandline"
+                app:layout_constraintTop_toBottomOf="@id/etclandline" />
+
+            <EditText
+                android:id="@+id/etcmobileno"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_mobile"
+                android:drawablePadding="@dimen/_10sdp"
+                android:inputType="number"
+                android:maxLength="15"
+                app:layout_constraintStart_toStartOf="@id/lblcmobileno"
+                app:layout_constraintTop_toBottomOf="@id/lblcmobileno" />
+
+            <TextView
+                android:id="@+id/lblcaltmobileno"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_alternate_mobile_number"
+                app:layout_constraintEnd_toEndOf="@id/etcmobileno"
+                app:layout_constraintStart_toStartOf="@id/etcmobileno"
+                app:layout_constraintTop_toBottomOf="@id/etcmobileno" />
+
+            <EditText
+                android:id="@+id/etcaltmobileno"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_mobile"
+                android:drawablePadding="@dimen/_10sdp"
+                android:inputType="number"
+                android:maxLength="15"
+                app:layout_constraintStart_toStartOf="@id/lblcaltmobileno"
+                app:layout_constraintTop_toBottomOf="@id/lblcaltmobileno" />
+
+            <TextView
+                android:id="@+id/lblcemail"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_email_id"
+                app:layout_constraintEnd_toEndOf="@id/etcaltmobileno"
+                app:layout_constraintStart_toStartOf="@id/etcaltmobileno"
+                app:layout_constraintTop_toBottomOf="@id/etcaltmobileno" />
+
+            <EditText
+                android:id="@+id/etcemail"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/_10sdp"
+                android:inputType="textEmailAddress"
+                app:layout_constraintStart_toStartOf="@id/lblcemail"
+                app:layout_constraintTop_toBottomOf="@id/lblcemail" />
+
+            <TextView
+                android:id="@+id/lblcwebsite"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_website"
+                app:layout_constraintEnd_toEndOf="@id/etcemail"
+                app:layout_constraintStart_toStartOf="@id/etcemail"
+                app:layout_constraintTop_toBottomOf="@id/etcemail" />
+
+            <EditText
+                android:id="@+id/etcwebsite"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="@id/lblcwebsite"
+                app:layout_constraintTop_toBottomOf="@id/lblcwebsite" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvCDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etcwebsite">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/lblcaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="@string/enter_your_company_address"
+                        android:textColor="@color/purple_700"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/txthouseno"
+                        style="@style/textview_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/house_no_optional"
+                        app:layout_constraintEnd_toEndOf="@+id/lblcaddress"
+                        app:layout_constraintStart_toStartOf="@+id/lblcaddress"
+                        app:layout_constraintTop_toBottomOf="@+id/lblcaddress" />
+
+                    <EditText
+                        android:id="@+id/ethouseno"
+                        style="@style/edittext_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_house_no_flat_society_name"
+                        app:layout_constraintEnd_toEndOf="@+id/txthouseno"
+                        app:layout_constraintStart_toStartOf="@+id/txthouseno"
+                        app:layout_constraintTop_toBottomOf="@+id/txthouseno" />
+
+
+
+                    <TextView
+                        android:id="@+id/lblsnoname"
+                        style="@style/textview_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/street_no_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ethouseno" />
+
+                    <EditText
+                        android:id="@+id/etcstreetnoname"
+                        style="@style/edittext_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/lblsnoname"
+                        app:layout_constraintTop_toBottomOf="@id/lblsnoname" />
+
+
+                    <TextView
+                        android:id="@+id/lblbno"
+                        style="@style/textview_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/landmak"
+                        app:layout_constraintEnd_toEndOf="@id/etcstreetnoname"
+                        app:layout_constraintStart_toStartOf="@id/etcstreetnoname"
+                        app:layout_constraintTop_toBottomOf="@id/etcstreetnoname" />
+
+                    <EditText
+                        android:id="@+id/etcLandmark"
+                        style="@style/edittext_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/lblbno"
+                        app:layout_constraintTop_toBottomOf="@id/lblbno" />
+
+                    <TextView
+                        android:id="@+id/lblcpincode"
+                        style="@style/textview_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pin_code"
+                        app:layout_constraintEnd_toEndOf="@id/etcLandmark"
+                        app:layout_constraintStart_toStartOf="@id/etcLandmark"
+                        app:layout_constraintTop_toBottomOf="@id/etcLandmark" />
+
+                    <EditText
+                        android:id="@+id/etcpincode"
+                        style="@style/edittext_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        app:layout_constraintStart_toStartOf="@id/lblcpincode"
+                        app:layout_constraintTop_toBottomOf="@id/lblcpincode" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/lblcdetails"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/company_details"
+                app:layout_constraintEnd_toEndOf="@id/cvCDetail"
+                app:layout_constraintStart_toStartOf="@id/cvCDetail"
+                app:layout_constraintTop_toBottomOf="@id/cvCDetail" />
+
+            <EditText
+                android:id="@+id/etcdetails"
+                style="@style/edittext_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="6"
+                android:maxLines="200"
+                android:background="@drawable/bg_edittext"
+                app:layout_constraintStart_toStartOf="@id/lblcdetails"
+                app:layout_constraintTop_toBottomOf="@id/lblcdetails" />
+
+            <TextView
+                android:id="@+id/lblclimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/etcdetails"
+                app:layout_constraintEnd_toEndOf="@id/etcdetails" />
+
+            <TextView
+                android:id="@+id/lblctiming"
+                style="@style/textview_13ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/timing"
+                app:layout_constraintEnd_toEndOf="@id/etcdetails"
+                app:layout_constraintStart_toStartOf="@id/etcdetails"
+                app:layout_constraintTop_toBottomOf="@id/etcdetails"
+                android:visibility="gone"/>
+
+
+            <RadioGroup
+                android:id="@+id/rbtiming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/lblctiming"
+                app:layout_constraintStart_toStartOf="@id/lblctiming"
+                app:layout_constraintTop_toBottomOf="@id/lblctiming"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radio_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/purple_700"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/regular"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="@id/rbtiming"
+                    app:layout_constraintStart_toStartOf="@id/rbtiming"
+                    app:layout_constraintTop_toBottomOf="@id/rbtiming" />
+
+                <RadioButton
+                    android:id="@+id/radio_emergancy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/purple_700"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/_24_7"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_13ssp" />
+            </RadioGroup>
+
+
+            <LinearLayout
+                android:id="@+id/tlTimmings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rbtiming"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <TableRow
+                    android:id="@+id/tlHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_700"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Days"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Openning"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:textColor="@color/white"/>
+
+                </TableRow>
+
+
+                <LinearLayout
+                    android:id="@+id/llMonday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbMonday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Monday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningMonday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingMonday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbTuesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tuesday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningTuesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingTuesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llWensday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbWednsday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Wednesday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningWednesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingWednesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llThursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbThursday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Thursday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningThursday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingThursday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFriday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbFriday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Friday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningFriday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingFriday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llSat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbSaturday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Saturday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningSaturday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingSaturday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llSun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintTop_toBottomOf="@id/tlHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <CheckBox
+                        android:id="@+id/cbSunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sunday"
+                        android:layout_gravity="center"
+                        android:textColor="@color/text_color"/>
+                    <Spinner
+                        android:id="@+id/spOpenningSunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Openning"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                    <Spinner
+                        android:id="@+id/spClosingSunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Closing"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        tools:listitem="@layout/item_custom_request"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tlTimmings"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/tvSelectLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:drawableStart="@drawable/ic_location_white"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="start|center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/select_location"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11ssp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tvSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/custombuttonblue"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_25sdp"
+                android:paddingRight="@dimen/_25sdp"
+                android:text="@string/select_your_package"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlLocation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"></ProgressBar>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

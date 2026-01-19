@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "873539215769",
+    "project_id": "aswack-86a20",
+    "storage_bucket": "aswack-86a20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873539215769:android:2932d14280436d82653308",
+        "android_client_info": {
+          "package_name": "com.avdhootsolutions.aswack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873539215769-mhuttmtqd1nls1h0s689b6p0rk9bnua8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAESHOJixMslInnkgWZUgbvg9loxhRNi6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873539215769-mhuttmtqd1nls1h0s689b6p0rk9bnua8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873539215769:android:9d49ed46c1d5a0d5653308",
+        "android_client_info": {
+          "package_name": "com.avdhootsolutions.aswack_shopkeeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873539215769-mhuttmtqd1nls1h0s689b6p0rk9bnua8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAESHOJixMslInnkgWZUgbvg9loxhRNi6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873539215769-mhuttmtqd1nls1h0s689b6p0rk9bnua8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

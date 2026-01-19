@@ -1,0 +1,167 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Aswack" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/gray</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="MyTimePickerDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Header Background -->
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:colorControlActivated">#4971AC</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="textview" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/menu_text_color</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+
+    <style name="textview_13ssp" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="paddingStart">@dimen/_5sdp</item>
+
+    </style>
+
+    <style name="edittext_13ssp" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:paddingTop">@dimen/_5ssp</item>
+        <item name="android:paddingBottom">@dimen/_5ssp</item>
+
+    </style>
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut
+        </item>
+    </style>
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/_20sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_20sdp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+    <style name="PauseDialogAnimationBottomToUp">
+        <item name="android:windowExitAnimation">@anim/anim_slide_out_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_bottom</item>
+    </style>
+
+    <style name="picture_dialog_style" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimationBottomToUp</item>
+    </style>
+    <style name="textview_white_13ssp" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="textview_orange_13ssp" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+    <style name="forgotpasswordblue" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+    </style>
+
+    <style name="dialog_style" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimationBottomToUp</item>
+    </style>
+
+
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="otptitle" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="loginedittext_13ssp" parent="Widget.AppCompat.EditText">
+        <item name="android:gravity">start</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="My.TextInputLayout.FilledBox.Padding" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/MyThemeOverlayFilledPadding</item>
+    </style>
+
+    <style name="MyThemeOverlayFilledPadding">
+        <item name="editTextStyle">@style/MyTextInputEditText_filledBox_padding</item>
+    </style>
+
+    <style name="MyTextInputEditText_filledBox_padding" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <!-- left and right padding -->
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:padding">0dp</item>
+        <!-- top and bottom padding -->
+    </style>
+
+    <style name="popins_medium" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+</resources>

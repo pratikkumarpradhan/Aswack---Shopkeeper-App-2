@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ThankYouForAddActivity">
+
+    <TextView
+        android:id="@+id/tvTitleone"
+        style="@style/forgotpasswordblue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:textSize="@dimen/_18sdp"
+        android:text="Thanks for choosing Aswack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageView
+        android:id="@+id/ivSmsgright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_success"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleone"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleone"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleone" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:text="@string/product_added_successfully"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivSmsgright"
+        app:layout_constraintTop_toBottomOf="@+id/ivSmsgright" />
+
+    <TextView
+        android:id="@+id/tvSmsgtitlefour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Product will live in application."
+        app:layout_constraintEnd_toEndOf="@+id/tvMessage"
+        android:textSize="@dimen/_14sdp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/tvMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custombtnwhiteblue"
+        android:text="@string/ok"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:paddingRight="@dimen/_20sdp"
+        android:paddingLeft="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSmsgtitlefour"
+        app:layout_constraintStart_toStartOf="@+id/tvSmsgtitlefour"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmsgtitlefour" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".activities.DashBoardActivity">
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_15sdp"
+        android:text="@string/companyname"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/cardredious"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:text="@string/welcome"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWelcomeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:text="@string/welcome_name"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+
+            <TextView
+                android:id="@+id/tvWelcomeInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:text="@string/welcome_info"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcomeName" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivMyProduct"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_my_product"
+                app:layout_constraintEnd_toStartOf="@id/ivMyOffer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcomeInfo"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvMyProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="@string/my_product"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivMyProduct"
+                app:layout_constraintStart_toStartOf="@id/ivMyProduct"
+                app:layout_constraintTop_toBottomOf="@id/ivMyProduct"
+                />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivMyOffer"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_my_offers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivMyProduct"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcomeInfo"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvMyOffer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:text="@string/my_offers"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivMyOffer"
+                app:layout_constraintStart_toStartOf="@id/ivMyOffer"
+                app:layout_constraintTop_toBottomOf="@id/ivMyOffer" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivRFQ"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_dash_rfq"
+                app:layout_constraintEnd_toStartOf="@id/ivGeneratingNotification"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMyOffer"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvRFQ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:text="@string/rfq"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivRFQ"
+                app:layout_constraintStart_toStartOf="@id/ivRFQ"
+                app:layout_constraintTop_toBottomOf="@id/ivRFQ" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivGeneratingNotification"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_gen_noti"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivRFQ"
+                app:layout_constraintTop_toBottomOf="@id/tvMyOffer"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvGeneratingNotification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:text="@string/generating_notification"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivGeneratingNotification"
+                app:layout_constraintStart_toStartOf="@id/ivGeneratingNotification"
+                app:layout_constraintTop_toBottomOf="@id/ivGeneratingNotification" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivMyOrders"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_my_orders"
+                app:layout_constraintEnd_toStartOf="@id/ivCustomerChat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRFQ"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvMyOrders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:text="@string/my_orders"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivMyOrders"
+                app:layout_constraintStart_toStartOf="@id/ivMyOrders"
+                app:layout_constraintTop_toBottomOf="@id/ivMyOrders" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivCustomerChat"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_custom_chat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivMyOrders"
+                app:layout_constraintTop_toBottomOf="@id/tvGeneratingNotification"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvCustomerChat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="@string/customer_chat"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivCustomerChat"
+                app:layout_constraintStart_toStartOf="@id/ivCustomerChat"
+                app:layout_constraintTop_toBottomOf="@id/ivCustomerChat" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivMyRating"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_rating"
+                app:layout_constraintEnd_toStartOf="@id/ivCustomiseRequirement"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMyOrders"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvMyRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="@string/my_rating"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivMyRating"
+                app:layout_constraintStart_toStartOf="@id/ivMyRating"
+                app:layout_constraintTop_toBottomOf="@id/ivMyRating" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivCustomiseRequirement"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_custome_requirement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivMyRating"
+                app:layout_constraintTop_toBottomOf="@id/tvCustomerChat"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvCustomiseRequirement"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+
+                android:text="@string/customise_requirement"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/ivCustomiseRequirement"
+                app:layout_constraintStart_toStartOf="@id/ivCustomiseRequirement"
+                app:layout_constraintTop_toBottomOf="@id/ivCustomiseRequirement" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_700"
+        android:scaleType="center"
+        android:src="@drawable/ic_round_add_24"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="35dp"
+        app:tint="@android:color/white" />
+
+    <!--Floating action button for add alarm-->
+    <!--Make sure that you are constraining this
+        button to the parent button-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:backgroundTint="@color/orange"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fbAdd"
+        app:layout_constraintEnd_toEndOf="@+id/fbAdd"
+        app:layout_constraintStart_toStartOf="@+id/fbAdd"
+        app:srcCompat="@drawable/ic_home_white"
+        android:visibility="gone"
+        app:tint="@android:color/white" />
+
+    <!--Action name text for the add alarm button-->
+    <!--Make sure that you are constraining this Text to
+        the add Alarm FAB button-->
+    <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_orange"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:text="@string/company_profile"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbProfile"
+        app:layout_constraintEnd_toStartOf="@+id/fbProfile"
+        app:layout_constraintTop_toTopOf="@+id/fbProfile" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:backgroundTint="@color/orange"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fbProfile"
+        app:layout_constraintEnd_toEndOf="@+id/fbAdd"
+        app:layout_constraintStart_toStartOf="@+id/fbAdd"
+        app:srcCompat="@drawable/ic_home_white"
+        android:visibility="gone"
+        app:tint="@android:color/white" />
+
+    <!--Action name text for the add alarm button-->
+    <!--Make sure that you are constraining this Text to
+        the add Alarm FAB button-->
+    <TextView
+        android:id="@+id/tvAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_orange"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:text="@string/admin_details"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/fbAdmin"
+        app:layout_constraintTop_toTopOf="@+id/fbAdmin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

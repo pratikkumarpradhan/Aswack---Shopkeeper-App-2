@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.avdhootsolutions.aswack_shopkeeper">
+
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <application
+        android:name="com.avdhootsolutions.aswack_shopkeeper.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.Aswack"
+       >
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAESHOJixMslInnkgWZUgbvg9loxhRNi6c" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher_foreground" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+
+        <service
+            android:name="com.avdhootsolutions.aswack_shopkeeper.service.MyFirebaseMessagingService"
+            android:exported="true">
+            <!--            android:permission="com.google.android.c2dm.permission.SEND">-->
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <!--                <action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
+            </intent-filter>
+        </service>
+
+        <service
+            android:name = "com.avdhootsolutions.aswack_shopkeeper.service.NotificationService"
+            android:label = "@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name = "com.avdhootsolutions.aswack_shopkeeper.service.NotificationService" />
+                <category android:name= "android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.RatingAndReviewActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddCourierProductActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.WebViewActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.BookingListActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="SELLER_BOOKING" />
+                <!-- Add this OPEN_ACTIVITY string into your data payload while sending the notification from server side. -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ChatListActivity"
+            android:exported="true" >
+<!--            <intent-filter>-->
+<!--                <action android:name="CHAT_LIST" />-->
+<!--                &lt;!&ndash; Add this OPEN_ACTIVITY string into your data payload while sending the notification from server side. &ndash;&gt;-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+
+        </activity>
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.CompanyProfileActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateCompanyProfileActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OrderDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SearchVehicleOfferDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OrderListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ProfileActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SellerWisePackageDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateProfileActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SearchVehicleDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.BookingDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SellerWisePackageListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddQuotationActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.QuotationDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AdminNotificationActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.PackageListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OfferDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddInsuranceHeavyEquipRentCarActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateOfferActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.PurchasedPackageListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.InsuranceProductsListActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SellVehicleDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ThankYouForRegistrationActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SignUpActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SellVehicleListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateSellVehicleActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateGarageProductActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ShowLocationOnMapActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateSparePartsCarAccesoriesActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateTyreServicesActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.MapActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ChatActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.RFQDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.RFQListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.VideoViewActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddOfferActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.MyOfferListActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ThankYouForAddActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddNotificationActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SellerNotificationListActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddProductActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.MyProductsActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.DashBoardActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SearchVehicleListActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.BuyVehicalActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.PackageDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.UpdateInsuranceHeavyEquipRentCarActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.InsuranceHeavyEquipRentCarDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.ForgotPasswordActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OTPForForgotPasswordActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.PageDetailActivity"
+            android:exported="true" />
+
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.HomeActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="SELLER_COMPANY_APPROVAL" />
+                <action android:name="CHAT_LIST_1" />
+                <action android:name="CHAT_LIST_2" />
+                <action android:name="CHAT_LIST_3" />
+                <action android:name="CHAT_LIST_4" />
+                <action android:name="CHAT_LIST_5" />
+                <action android:name="CHAT_LIST_6" />
+                <action android:name="CHAT_LIST_7" />
+                <action android:name="CHAT_LIST_8" />
+
+                <!-- Add this OPEN_ACTIVITY string into your data payload while sending the notification from server side. -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OTPActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.VerifyOTPActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.LoginActivity"
+            android:exported="true"
+      />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.GarageServiceListActivity"
+            android:exported="true"
+            />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SparePartsCarAccesoriesDetailActivity"
+            android:exported="true"
+            />
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddGarageServiceActivity"
+            android:exported="true"
+            />
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddTyreServiceActivity"
+            android:exported="true"
+            />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.GarageDetailActivity"
+            android:exported="true"
+            />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.TyreServiceDetailActivity"
+            android:exported="true"
+            />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.TyreServiceListActivity"
+            android:exported="true"
+            />
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.OfferDetailForProductsActivity"
+            android:exported="true"
+            />
+
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddOfferForProductsActivity"
+            android:exported="true"
+            />
+
+
+
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddVehicleForSellActivity"
+            android:exported="true"
+            />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.AddSparePartsCarAccesoriesActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.SparePartsCarAccessoriesListActivity"
+            android:exported="true" />
+        
+        <activity android:name=".activities.CourierListActivity"/>
+
+        <activity android:name=".activities.CourierDetailActivity"/>
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.CompanySignUpActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.MainActivity"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_kxuu8CSoxDWptj" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

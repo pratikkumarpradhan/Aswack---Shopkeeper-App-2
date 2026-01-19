@@ -1,0 +1,79 @@
+package com.avdhootsolutions.aswack_shopkeeper.enums;
+
+public enum IntentKeyEnum {
+
+    MOBILE_NUMBER,
+
+    CAT_ID,
+
+    COMPANY_REGISTRATION_DATA,
+
+    ADDED_ITEM,
+
+    BUY_CAR_DATA,
+
+    PACKAGE_DATA,
+
+    COMPANY_ID,
+
+    MAIN_CAT_ID,
+
+    FILE_PATH,
+
+    DIRECT_PACKAGE,
+
+    CUSTOM_REQUEST_CODE,
+
+    VEHICLE_DETAILS,
+
+    OFFER_DETAILS,
+
+    PACKAGE_ID,
+
+    PRODUCT_LIST,
+
+    CHAT_PRODUCT_DATA,
+
+    PRODUCT_ID,
+
+    RFQ_DATA,
+
+    CHAT_PRODUCT_DATA_WITH_QUOTATION,
+
+    BOOKING_DETAIL,
+
+    LATITUDE,
+
+    LONGITUDE,
+
+    FULL_ADDRESS,
+
+    USER_NAME,
+
+    SELLER_ID,
+
+    IS_BUYER_OF_VEHICLE,
+
+    ORDER_ID,
+
+    PAGE_NO,
+
+    IS_PRODUCT_UPDATED,
+
+    IS_PRODUCT_DELETED,
+
+    USER_TYPE,
+
+    PACKAGE_PURCHASED,
+
+    COURIER_DETAIL,
+
+    IS_REPLY_ADDED,
+
+    VEHICLE_CATEGORY_ID,
+
+    NOTIFICATION_FROM_CHAT,
+
+    WEB_VIEW_URL
+
+}

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_5sdp"
+    tools:context=".activities.CarSearchViewActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/header_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clYoueaddreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@id/clYoueaddreview"
+                app:layout_constraintStart_toStartOf="@id/clYoueaddreview"
+                app:layout_constraintTop_toTopOf="@id/clYoueaddreview">
+
+                <TextView
+                    android:id="@+id/tvaddreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:text="  Your Add Review"
+                    android:textColor="@color/purple_700"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvadno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text="Ad no.:123456"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvOwner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tvOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:background="@drawable/orangewhitenoeffect"
+                android:padding="@dimen/_3sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tvadno"
+                app:layout_constraintTop_toBottomOf="@+id/cvAdd" />
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvOwner"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorEnabled="true"
+                app:sliderIndicatorGravity="bottom|center"
+                app:sliderIndicatorMargin="@dimen/_15sdp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="@dimen/_3sdp"
+                app:sliderIndicatorRadius="@dimen/_2sdp"
+                app:sliderIndicatorSelectedColor="@color/purple_500"
+                app:sliderIndicatorUnselectedColor="@color/bg_edittext"
+                app:sliderScrollTimeInSec="1"
+                />
+
+            <TextView
+                android:id="@+id/tvTitleCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:text="klbhjkh"
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="@id/clYoueaddreview"
+                app:layout_constraintStart_toStartOf="@id/clYoueaddreview"
+                app:layout_constraintTop_toBottomOf="@id/slider" />
+
+
+            <TextView
+                android:id="@+id/tvCarname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text="kjkjhjkh"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="@id/tvTitleCar"
+                app:layout_constraintStart_toStartOf="@id/tvTitleCar"
+                app:layout_constraintTop_toBottomOf="@id/tvTitleCar" />
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:text="ahhs hjok "
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="@id/tvCarname"
+                app:layout_constraintStart_toStartOf="@id/tvCarname"
+                app:layout_constraintTop_toBottomOf="@id/tvCarname" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvcardetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:elevation="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@id/clYoueaddreview"
+                app:layout_constraintStart_toStartOf="@id/clYoueaddreview"
+                app:layout_constraintTop_toBottomOf="@id/tvType">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCarfulldetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp">
+
+                    <TextView
+                        android:id="@+id/tvtypecar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_diesel"
+                        android:fontFamily="@font/poppins_medium"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toStartOf="@id/tvCarkm"
+                        app:layout_constraintStart_toStartOf="@id/clCarfulldetails"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCarkm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_speed"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toStartOf="@+id/tvVarient"
+                        app:layout_constraintStart_toEndOf="@+id/tvtypecar"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvVarient"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_meter"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvCarkm"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvVarient" />
+
+                    <TextView
+                        android:id="@+id/tvPostingdate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="end"
+                        android:includeFontPadding="false"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toEndOf="@id/tvPosting"
+                        app:layout_constraintStart_toStartOf="@id/tvPosting"
+                        app:layout_constraintTop_toBottomOf="@id/tvPosting" />
+
+                    <TextView
+                        android:id="@+id/tvPosting"
+                        style="@style/textview_orange_13ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:drawableStart="@drawable/ic_date"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:drawableTint="@color/orange"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:text="@string/posting_date"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view2" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:drawableTint="@color/gray"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvPostingdate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCarkm" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvCardescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@+id/cvcardetails"
+                app:layout_constraintStart_toStartOf="@+id/cvcardetails"
+                app:layout_constraintTop_toBottomOf="@+id/cvcardetails"
+                app:layout_constraintBottom_toTopOf="@id/cvPosteddetails"
+                tools:ignore="NotSibling">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCarspecification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvdescaddreview"
+                        style="@style/textview_orange_13ssp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="@string/description"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/cvCardescription"
+                        app:layout_constraintTop_toBottomOf="@id/cvCardescription" />
+
+                    <TextView
+                        android:id="@+id/tvfulldescaddreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_5sdp"
+                        app:layout_constraintStart_toStartOf="@id/cvCardescription"
+                        app:layout_constraintTop_toBottomOf="@id/tvdescaddreview" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvPosteddetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="@id/cvCardescription"
+                app:layout_constraintStart_toStartOf="@id/cvCardescription"
+                app:layout_constraintTop_toBottomOf="@id/cvCardescription"
+                app:layout_constraintBottom_toTopOf="@id/rlReview">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clposteddetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgclidentimage"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:src="@drawable/imgcustomer"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/clposteddetails"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvMobile"
+                        style="@style/textview_orange_13ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="bottom"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:text="Contact No :"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintBottom_toTopOf="@id/tvMobileNoValue"
+                        app:layout_constraintStart_toEndOf="@id/imgclidentimage"
+                        app:layout_constraintTop_toTopOf="@id/imgclidentimage" />
+
+                    <TextView
+                        android:id="@+id/tvpostedon"
+                        style="@style/textview_orange_13ssp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:gravity="bottom"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/_9ssp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvMobile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvMobile" />
+
+                    <TextView
+                        android:id="@+id/tvMobileNoValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:textColor="@color/purple_700"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintBottom_toBottomOf="@id/imgclidentimage"
+                        app:layout_constraintStart_toEndOf="@id/imgclidentimage"
+                        app:layout_constraintTop_toBottomOf="@id/tvMobile" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/rlReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvPosteddetails"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/tvEdit"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_button"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:text="@string/edit"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11ssp" />
+
+                <TextView
+                    android:id="@+id/tvDelete"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_button"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:text="@string/delete"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11ssp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"></ProgressBar>
+</androidx.constraintlayout.widget.ConstraintLayout>
