@@ -282,11 +282,14 @@ class DashBoardActivity : AppCompatActivity() {
     private fun initView() {
         dashBoardViewModel = ViewModelProvider(this).get(DashBoardViewModel::class.java)
 
-        tvWelcomeName.text = resources.getString(R.string.welcome) + " " + Helper().getLoginData(mContext).name
+        // Handle empty login data gracefully
+        val loginData = Helper().getLoginData(mContext)
+        val userName = if (loginData.name.isNullOrEmpty()) "User" else loginData.name
+        tvWelcomeName.text = resources.getString(R.string.welcome) + " " + userName
 
-        dashBoardViewModel.categoryId = intent.getStringExtra(IntentKeyEnum.CAT_ID.name).toString()
-        dashBoardViewModel.companyId = intent.getStringExtra(IntentKeyEnum.COMPANY_ID.name).toString()
-        dashBoardViewModel.packageId = intent.getStringExtra(IntentKeyEnum.PACKAGE_ID.name).toString()
+        dashBoardViewModel.categoryId = intent.getStringExtra(IntentKeyEnum.CAT_ID.name) ?: ""
+        dashBoardViewModel.companyId = intent.getStringExtra(IntentKeyEnum.COMPANY_ID.name) ?: ""
+        dashBoardViewModel.packageId = intent.getStringExtra(IntentKeyEnum.PACKAGE_ID.name) ?: ""
 
         if (intent.hasExtra("NOTIFICATION_FROM_CHAT")){
 
