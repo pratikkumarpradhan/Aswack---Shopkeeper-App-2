@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_700"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,17 +47,91 @@
             app:layout_constraintTop_toBottomOf="@id/tvLoginmsg" />
 
         <TextView
-            android:id="@+id/tvLoginid"
+            android:id="@+id/tvFullName"
             style="@style/textview_13ssp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
-            android:text="@string/enter_email_phone_no"
+            android:text="Full Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivLoginimg" />
+
+        <EditText
+            android:id="@+id/etFullName"
+            style="@style/loginedittext_13ssp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFullName" />
+
+        <View
+            android:id="@+id/viewFullName"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/etFullName"
+            app:layout_constraintStart_toStartOf="@id/etFullName"
+            app:layout_constraintTop_toBottomOf="@id/etFullName" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            style="@style/textview_13ssp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:text="Email Address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etFullName" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            style="@style/loginedittext_13ssp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+        <View
+            android:id="@+id/viewEmail"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+        <TextView
+            android:id="@+id/tvMobile"
+            style="@style/textview_13ssp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:text="@string/enter_email_phone_no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
         <com.rilixtech.widget.countrycodepicker.CountryCodePicker
             android:id="@+id/ccp"
@@ -68,12 +142,12 @@
             app:ccp_hideNameCode="true"
             app:ccp_showFlag="false"
             app:ccp_textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/etLoginid"
+            app:layout_constraintBottom_toBottomOf="@id/etMobile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/etLoginid" />
+            app:layout_constraintTop_toTopOf="@id/etMobile" />
 
         <EditText
-            android:id="@+id/etLoginid"
+            android:id="@+id/etMobile"
             style="@style/loginedittext_13ssp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -83,20 +157,20 @@
             android:textColorHint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ccp"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginid" />
+            app:layout_constraintTop_toBottomOf="@id/tvMobile" />
 
         <View
-            android:id="@+id/view1"
+            android:id="@+id/viewMobile"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/_1sdp"
             android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/etLoginid"
+            app:layout_constraintEnd_toEndOf="@id/etMobile"
             app:layout_constraintStart_toStartOf="@id/ccp"
-            app:layout_constraintTop_toBottomOf="@id/etLoginid" />
+            app:layout_constraintTop_toBottomOf="@id/etMobile" />
 
         <TextView
-            android:id="@+id/tvLoginpassword"
+            android:id="@+id/tvPassword"
             style="@style/textview_13ssp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,11 +180,11 @@
             android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etLoginid" />
+            app:layout_constraintTop_toBottomOf="@id/etMobile" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvPassword"
+            android:id="@+id/tvPasswordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
@@ -120,7 +194,7 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginpassword"
+            app:layout_constraintTop_toBottomOf="@id/tvPassword"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/white">
 
@@ -140,7 +214,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/viewPassword"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -148,21 +222,9 @@
             android:layout_marginBottom="@dimen/_15sdp"
             android:background="@color/white"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@id/tvPassword"
-            app:layout_constraintEnd_toEndOf="@id/tvPassword"
-            app:layout_constraintStart_toStartOf="@id/tvPassword" />
-
-        <TextView
-            android:id="@+id/tvForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forgot Password ?"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-           android:padding="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/view2"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/tvPasswordLayout"
+            app:layout_constraintEnd_toEndOf="@id/tvPasswordLayout"
+            app:layout_constraintStart_toStartOf="@id/tvPasswordLayout" />
 
         <TextView
             android:id="@+id/tvSubmit"
@@ -180,23 +242,7 @@
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPassword" />
-
-
-
-        <TextView
-            android:id="@+id/tvRegisterText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Don't have an account? Register"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13ssp"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSubmit"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tvPasswordLayout" />
 
         <ProgressBar
             android:id="@+id/progressBar"

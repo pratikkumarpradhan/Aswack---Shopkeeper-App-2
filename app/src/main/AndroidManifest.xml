@@ -340,6 +340,11 @@
       />
 
         <activity
+            android:name="com.avdhootsolutions.aswack_shopkeeper.activities.RegisterActivity"
+            android:exported="true"
+      />
+
+        <activity
             android:name="com.avdhootsolutions.aswack_shopkeeper.activities.GarageServiceListActivity"
             android:exported="true"
             />

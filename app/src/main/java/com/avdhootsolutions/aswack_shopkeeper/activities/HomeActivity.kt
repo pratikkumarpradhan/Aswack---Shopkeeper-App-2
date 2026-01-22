@@ -368,11 +368,12 @@ class HomeActivity : AppCompatActivity(),
         }
 
         tvLogout.setOnClickListener {
-
-            progressBar.visibility = View.VISIBLE
-            val login = Login()
-            login.seller_id = Helper().getLoginData(mContext).id
-            homeViewModel.logoutAndClearFCM(login)
+            // Clear local session and navigate to Login
+            Helper().clearLoginData(mContext)
+            val i = Intent(mContext, LoginActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            finish()
         }
 
         tvHelpCenter.setOnClickListener {
