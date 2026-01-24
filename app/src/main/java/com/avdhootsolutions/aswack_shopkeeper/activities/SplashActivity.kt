@@ -31,13 +31,7 @@ class SplashActivity : AppCompatActivity() {
                 val alert = builder.create()
                 alert.show()
             } else {
-                // TEMPORARY: Bypass login authentication - go directly to HomeActivity
-                val i = Intent(applicationContext, HomeActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(i)
-                finish()
-
-                /* ORIGINAL CODE - Commented out for temporary login bypass
+                // Check if user is already logged in
                 if (Helper().getLoginData(this).mobile.isNullOrEmpty()){
                     val i = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(i)
@@ -48,7 +42,6 @@ class SplashActivity : AppCompatActivity() {
                     startActivity(i)
                     finish()
                 }
-                */
             }
         }, 1000)
     }

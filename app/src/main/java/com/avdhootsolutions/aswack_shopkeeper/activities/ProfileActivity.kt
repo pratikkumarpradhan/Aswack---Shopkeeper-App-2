@@ -19,6 +19,7 @@ import com.avdhootsolutions.aswack_shopkeeper.models.Login
 import com.avdhootsolutions.aswack_shopkeeper.models.Register
 import com.avdhootsolutions.aswack_shopkeeper.utilities.Helper
 import com.avdhootsolutions.aswack_shopkeeper.viewmodels.ProfileViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.util.*
 
@@ -30,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
      * View model
      */
     lateinit var profileViewModel: ProfileViewModel
+    private val db = FirebaseFirestore.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -215,59 +217,54 @@ class ProfileActivity : AppCompatActivity() {
             spCity.adapter = adapter
 
 
-            val login = Login()
-            login.seller_id = Helper().getLoginData(mContext).id
-
-            profileViewModel.apiGetProfileDetails(login)
-
-
+            // Load profile data from Firebase
+            loadProfileFromFirebase()
         })
-
-
-        profileViewModel.profileResponseLiveData.observe(this,
-            androidx.lifecycle.Observer { profileData ->
-                progressBar.visibility = View.GONE
-
-                etemail.setText(profileData[0].email)
-                etmobileno.setText(profileData[0].mobile)
-                etfullname.setText(profileData[0].name)
-                etpincode.setText(profileData[0].pincode)
-                tvDateValue.setText(profileData[0].dob)
-                etstreetname.setText(profileData[0].streetno)
-                ethouseno.setText(profileData[0].houseno)
-
-                if (profileData[0].gender == GenderEnum.MALE.ordinal.toString()) {
-                    rbMale.isChecked = true
-                } else if (profileData[0].gender == GenderEnum.FEMALE.ordinal.toString()) {
-                    rbFemale.isChecked = true
-                }
-
-                profileViewModel.statesLiveData.value?.let { stateList ->
-                    for (i in stateList.indices) {
-                        if (stateList[i].id == profileData[0].state) {
-                            spState.setSelection(i)
-                        }
-                    }
-                }
-
-
-                profileViewModel.citiesLiveData.value?.let { cityList ->
-                    for (i in cityList.indices) {
-                        if (cityList[i].id == profileData[0].city) {
-                            spCity.setSelection(i)
-                        }
-                    }
-                }
-
-
-            })
 
         profileViewModel.errorMessage.observe(this, androidx.lifecycle.Observer { error ->
-
             Toast.makeText(mContext, error, Toast.LENGTH_SHORT).show()
         })
+    }
 
+    private fun loadProfileFromFirebase() {
+        val loginData = Helper().getLoginData(mContext)
+        val mobileNumber = loginData.mobile
 
+        if (mobileNumber.isNullOrEmpty()) {
+            // Fallback to local data if Firebase fails
+            loadFromLocalData(loginData)
+            return
+        }
+
+        // Load from Firebase
+        db.collection("dealerUsers")
+            .document(mobileNumber)
+            .get()
+            .addOnSuccessListener { document ->
+                progressBar.visibility = View.GONE
+                if (document.exists()) {
+                    val dealerData = document.data
+                    etemail.setText(dealerData?.get("email") as? String ?: "")
+                    etmobileno.setText(dealerData?.get("mobile") as? String ?: "")
+                    etfullname.setText(dealerData?.get("name") as? String ?: "")
+                } else {
+                    // If not found in Firebase, load from local data
+                    loadFromLocalData(loginData)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("ProfileActivity", "Error loading profile from Firebase", e)
+                progressBar.visibility = View.GONE
+                // Fallback to local data
+                loadFromLocalData(loginData)
+            }
+    }
+
+    private fun loadFromLocalData(loginData: Register) {
+        progressBar.visibility = View.GONE
+        etemail.setText(loginData.email ?: "")
+        etmobileno.setText(loginData.mobile ?: "")
+        etfullname.setText(loginData.name ?: "")
     }
 
     override fun onResume() {

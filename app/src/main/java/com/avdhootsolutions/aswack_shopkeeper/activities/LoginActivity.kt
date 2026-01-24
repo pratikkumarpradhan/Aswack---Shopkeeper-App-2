@@ -7,13 +7,10 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.avdhootsolutions.aswack_shopkeeper.R
-import com.avdhootsolutions.aswack_shopkeeper.models.Login
+import com.avdhootsolutions.aswack_shopkeeper.models.Register
 import com.avdhootsolutions.aswack_shopkeeper.utilities.Helper
-import com.avdhootsolutions.aswack_shopkeeper.viewmodels.LoginViewModel
-import com.avdhootsolutions.aswack_shopkeeper.viewmodels.OTPViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.ccp
@@ -21,17 +18,13 @@ import kotlinx.android.synthetic.main.activity_login.tvSubmit
 
 class LoginActivity : AppCompatActivity() {
 
-    /**
-     * View model
-     */
-    lateinit var loginViewModel : LoginViewModel
-
     lateinit var mContext: Context
 
     /**
      * Firebase token for send notification
      */
     var firebaseToken = ""
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,81 +55,95 @@ class LoginActivity : AppCompatActivity() {
         tvSubmit.setOnClickListener(View.OnClickListener {
 
             if (etLoginid.text.toString().isNotEmpty() && etPassword.text.toString().isNotEmpty()) {
-
                 progressBar.visibility = View.VISIBLE
-
-                val login = Login()
-                login.mobile = etLoginid.text.toString()
-                login.password = etPassword.text.toString()
-                if (firebaseToken.isNullOrEmpty()){
-                    FirebaseMessaging.getInstance().token.addOnCompleteListener {
-                        if(it.isComplete){
-                            firebaseToken = it.result.toString()
-                            Log.e("firebaseToken ", firebaseToken)
-
-                        }
-                    }
-                }
-
-                login.device_token = firebaseToken
-
-                loginViewModel.apiLogin(login)
-
-//                if (etLoginid.text.toString().length == 10) {
-//                    Helper().setPhoneNo(etLoginid.text.toString(), mContext)
-//                    startActivity(Intent(mContext,
-//                        HomeActivity::class.java))
-//                } else {
-//                    Toast.makeText(mContext,
-//                        resources.getString(R.string.enter_ten_characters),
-//                        Toast.LENGTH_SHORT).show()
-//                }
-
-
+                authenticateUser()
             } else {
                 Toast.makeText(mContext,
                     resources.getString(R.string.fill_all_details),
                     Toast.LENGTH_SHORT).show()
             }
-
-
         })
-        llRegister.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(mContext,
-                OTPActivity::class.java))
-        })
+        
+        tvRegisterText.setOnClickListener {
+            val intent = Intent(mContext, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun init() {
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if(it.isComplete){
                 firebaseToken = it.result.toString()
                 Log.e("firebaseToken ", firebaseToken)
-
             }
         }
+    }
 
-        loginViewModel.loginResponseLiveData.observe(this, Observer { loginResponse ->
-            Toast.makeText(mContext, resources.getString(R.string.login_successfull), Toast.LENGTH_SHORT).show()
-            progressBar.visibility = View.GONE
-            Helper().setLoginData(loginResponse[0],mContext)
-            val i = Intent(mContext, HomeActivity::class.java)
-            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(i)
-            finish()
-        })
+    private fun authenticateUser() {
+        val mobileNumber = etLoginid.text.toString().trim()
+        val password = etPassword.text.toString().trim()
 
+        // Get FCM token if not already available
+        if (firebaseToken.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener {
+                if (it.isComplete) {
+                    firebaseToken = it.result.toString()
+                    Log.e("firebaseToken", firebaseToken)
+                    performLogin(mobileNumber, password)
+                }
+            }
+        } else {
+            performLogin(mobileNumber, password)
+        }
+    }
 
+    private fun performLogin(mobileNumber: String, password: String) {
+        // Query Firebase for user with matching mobile and password
+        db.collection("dealerUsers")
+            .whereEqualTo("mobile", mobileNumber)
+            .whereEqualTo("password", password)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    // Invalid credentials
+                    progressBar.visibility = View.GONE
+                    Toast.makeText(mContext, "Invalid mobile number or password", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Login successful
+                    val document = documents.documents[0]
+                    val dealerData = document.data
 
-        loginViewModel.errorMessage.observe(this, Observer { error ->
-            progressBar.visibility = View.GONE
-            Toast.makeText(mContext, error, Toast.LENGTH_SHORT).show()
-        })
+                    // Update device token
+                    document.reference.update("deviceToken", firebaseToken)
+                        .addOnSuccessListener {
+                            Log.e("LoginActivity", "Device token updated")
+                        }
 
+                    // Save user data locally
+                    val register = Register()
+                    register.name = dealerData?.get("name") as? String ?: ""
+                    register.email = dealerData?.get("email") as? String ?: ""
+                    register.mobile = dealerData?.get("mobile") as? String ?: ""
+                    register.password = dealerData?.get("password") as? String ?: ""
+                    register.device_token = firebaseToken
+                    register.id = document.id
 
+                    Helper().setLoginData(register, mContext)
 
+                    Toast.makeText(mContext, resources.getString(R.string.login_successfull), Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.GONE
 
+                    // Navigate to Home screen
+                    val i = Intent(mContext, HomeActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                    finish()
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("LoginActivity", "Error authenticating user", e)
+                progressBar.visibility = View.GONE
+                Toast.makeText(mContext, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }

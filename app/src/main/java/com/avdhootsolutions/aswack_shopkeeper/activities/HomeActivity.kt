@@ -368,11 +368,12 @@ class HomeActivity : AppCompatActivity(),
         }
 
         tvLogout.setOnClickListener {
-
-            progressBar.visibility = View.VISIBLE
-            val login = Login()
-            login.seller_id = Helper().getLoginData(mContext).id
-            homeViewModel.logoutAndClearFCM(login)
+            // Clear local session and navigate to Login
+            Helper().clearLoginData(mContext)
+            val i = Intent(mContext, LoginActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            finish()
         }
 
         tvHelpCenter.setOnClickListener {
@@ -474,7 +475,10 @@ class HomeActivity : AppCompatActivity(),
         val snapHelper: SnapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(rvSlider)
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        tvUserName.setText(getString(R.string.hello) + " " + Helper().getLoginData(mContext).name)
+        // Handle empty login data gracefully
+        val loginData = Helper().getLoginData(mContext)
+        val userName = if (loginData.name.isNullOrEmpty()) "User" else loginData.name
+        tvUserName.setText(getString(R.string.hello) + " " + userName)
         icMenu.setOnClickListener(View.OnClickListener { drawer.openDrawer(GravityCompat.START) })
         initFab()
     }
@@ -607,14 +611,23 @@ class HomeActivity : AppCompatActivity(),
                     override fun onCatgeorySelected(categories: Categories, position: Int) {
 
                         if (posOfCategory == 0) {
+                            // TEMPORARY: Bypass company status check and navigate directly
+                            dialogHelper.dismissDialog()
+                            categories.id?.let {
+                                val intent = Intent(mContext, DashBoardActivity::class.java)
+                                intent.putExtra(IntentKeyEnum.CAT_ID.name, it)
+                                intent.putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                                intent.putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                                startActivity(intent)
+                            }
+                            
+                            /* ORIGINAL CODE - Commented out for temporary bypass
                             val login = Login()
                             login.seller_id = Helper().getLoginData(mContext).id
                             categories.id?.let {
-                                homeViewModel.getCompanyRegisterStatusForCategory(
-                                    login,
-                                    it
-                                )
+                                homeViewModel.getCompanyRegisterStatusForCategory(login, it)
                             }
+                            */
                         } else if (posOfCategory == 1) {
 
                             dialogHelper.dismissDialog()
@@ -629,24 +642,25 @@ class HomeActivity : AppCompatActivity(),
 
 
         } else {
-
-            val login = Login()
-            login.seller_id = Helper().getLoginData(mContext).id
-
+            // TEMPORARY: Bypass company status check and navigate directly
             categories.id?.let {
-
-                login.category_id = it
-//                val intent = Intent(mContext, DashBoardActivity::class.java)
-//                intent.putExtra(IntentKeyEnum.CAT_ID.name, categories.id)
-//                startActivity(intent)
-
-                progressBar.visibility = View.VISIBLE
-
-                homeViewModel.getCompanyRegisterStatusForCategory(login, it)
-
-
+                progressBar.visibility = View.GONE
+                val intent = Intent(mContext, DashBoardActivity::class.java)
+                intent.putExtra(IntentKeyEnum.CAT_ID.name, it)
+                intent.putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                intent.putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                startActivity(intent)
             }
 
+            /* ORIGINAL CODE - Commented out for temporary bypass
+            val login = Login()
+            login.seller_id = Helper().getLoginData(mContext).id
+            categories.id?.let {
+                login.category_id = it
+                progressBar.visibility = View.VISIBLE
+                homeViewModel.getCompanyRegisterStatusForCategory(login, it)
+            }
+            */
         }
     }
 
@@ -703,19 +717,78 @@ class HomeActivity : AppCompatActivity(),
 
 
     fun categoryClickEvent(categoryId: String) {
+        // TEMPORARY: Bypass company status check and navigate directly to screens
+        progressBar.visibility = View.GONE
+        
+        // Navigate directly to appropriate screens based on category ID
+        // Use empty strings for company_id and package_id to allow navigation without login
+        val intent = when (categoryId) {
+            "1" -> {
+                // Sell Vehicle
+                Intent(mContext, SellVehicleListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            "3", "5", "10" -> {
+                // Garage, Emergency Service, Breakdown
+                Intent(mContext, GarageServiceListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.MAIN_CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            "4", "8", "11" -> {
+                // Insurance, Hire Heavy Equipment, Rent a Car
+                Intent(mContext, InsuranceProductsListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.MAIN_CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            "6", "7" -> {
+                // Spare Parts, Car Accessories
+                Intent(mContext, SparePartsCarAccessoriesListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.MAIN_CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            "9" -> {
+                // Tyre Service
+                Intent(mContext, TyreServiceListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.MAIN_CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            "12" -> {
+                // Courier
+                Intent(mContext, CourierListActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.MAIN_CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+            else -> {
+                // Default to DashBoardActivity
+                Intent(mContext, DashBoardActivity::class.java).apply {
+                    putExtra(IntentKeyEnum.CAT_ID.name, categoryId)
+                    putExtra(IntentKeyEnum.COMPANY_ID.name, "")
+                    putExtra(IntentKeyEnum.PACKAGE_ID.name, "")
+                }
+            }
+        }
+        startActivity(intent)
+
+        /* ORIGINAL CODE - Commented out for temporary bypass
         val login = Login()
         login.seller_id = Helper().getLoginData(mContext).id
-
         login.category_id = categoryId
-//                val intent = Intent(mContext, DashBoardActivity::class.java)
-//                intent.putExtra(IntentKeyEnum.CAT_ID.name, categories.id)
-//                startActivity(intent)
-
         progressBar.visibility = View.VISIBLE
-
         homeViewModel.getCompanyRegisterStatusForCategory(login, categoryId)
-
-
+        */
     }
 
     /**

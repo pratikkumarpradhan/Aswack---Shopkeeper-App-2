@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aswack Shopkeeper</string>
+    <string name="app_name">Zarooori</string>
     <string name="world_vehical_service">World Vehicle Services</string>
     <string name="Aswack" />
     <string name="companyname">Aswack</string>
@@ -41,7 +41,7 @@
     <string name="our_services">Please Select your Domain from below list.</string>
     <string name="call_to_admin">Call to Admin</string>
     <string name="chat_with_admin">Chat with Admin</string>
-    <string name="welcome_to_aswack">Welcome to Aswack</string>
+    <string name="welcome_to_zarooori">Welcome to Zarooori</string>
     <string name="customer_name">Customer Name</string>
     <string name="car">Car</string>
     <string name="bike">Bike</string>
