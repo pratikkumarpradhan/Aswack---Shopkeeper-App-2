@@ -2,17 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/yellow">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
+        android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- PROFILE -->
         <TextView
             android:id="@+id/tvProfile"
             style="@style/textview"
@@ -21,19 +24,15 @@
             android:drawableStart="@drawable/ic_profile"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- RFQ -->
         <TextView
             android:id="@+id/tvRFQ"
             style="@style/textview"
@@ -42,21 +41,17 @@
             android:drawableStart="@drawable/ic_rfq"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/rfq"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"
             android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile"
+            android:background="@color/black"
             android:visibility="gone"/>
 
+        <!-- FIND OFFERS -->
         <TextView
             android:id="@+id/tvFindOffers"
             style="@style/textview"
@@ -65,21 +60,17 @@
             android:drawableStart="@drawable/ic_offer"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/find_offers"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"
             android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile"
+            android:background="@color/black"
             android:visibility="gone"/>
 
+        <!-- BOOKING -->
         <TextView
             android:id="@+id/tvBooking"
             style="@style/textview"
@@ -88,20 +79,15 @@
             android:drawableStart="@drawable/ic_booking"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/booking_list"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
-
+        <!-- PACKAGES -->
         <TextView
             android:id="@+id/tvPurchasedPackages"
             style="@style/textview"
@@ -110,23 +96,15 @@
             android:drawableStart="@drawable/ic_packages"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/my_packages"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile"
-           />
+            android:background="@color/black"/>
 
-
-
+        <!-- ABOUT US -->
         <TextView
             android:id="@+id/tvAboutUs"
             style="@style/textview"
@@ -135,19 +113,15 @@
             android:drawableStart="@drawable/ic_about_us"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/about_us"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- CONTACT -->
         <TextView
             android:id="@+id/tvContactUs"
             style="@style/textview"
@@ -156,19 +130,15 @@
             android:drawableStart="@drawable/ic_contact_us"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/contact_us"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- TERMS -->
         <TextView
             android:id="@+id/tvTermsCondition"
             style="@style/textview"
@@ -177,19 +147,15 @@
             android:drawableStart="@drawable/ic_terms"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/terms_condition"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- PRIVACY -->
         <TextView
             android:id="@+id/tvPrivacyPolicy"
             style="@style/textview"
@@ -198,19 +164,15 @@
             android:drawableStart="@drawable/ic_privacy_policy"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/privacy_policy"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- HELP -->
         <TextView
             android:id="@+id/tvHelpCenter"
             style="@style/textview"
@@ -219,18 +181,15 @@
             android:drawableStart="@drawable/ic_help"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/help"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
+
+        <!-- FAQ -->
         <TextView
             android:id="@+id/tvFaq"
             style="@style/textview"
@@ -239,19 +198,15 @@
             android:drawableStart="@drawable/ic_help"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/faq"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
 
+        <!-- LOGOUT -->
         <TextView
             android:id="@+id/tvLogout"
             style="@style/textview"
@@ -260,18 +215,14 @@
             android:drawableStart="@drawable/ic_logout"
             android:drawablePadding="@dimen/_5sdp"
             android:text="@string/logout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black"
+            android:drawableTint="@color/black"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/view_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+            android:background="@color/black"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

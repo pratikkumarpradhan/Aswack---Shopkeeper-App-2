@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/purple_700">
+    android:background="@color/yellow">
 
     <TextView
         android:id="@+id/tvSelect"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_16sdp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:gravity="center"
         android:textStyle="bold"
@@ -67,7 +67,7 @@
                 android:minLines="2"
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/sell_vehicle"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
         <LinearLayout
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/white"></LinearLayout>
+            android:background="@color/black"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBuyVehicle"
@@ -136,7 +136,7 @@
                 android:minLines="2"
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/buy_vehicle"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +173,7 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/llBuySell"></LinearLayout>
 
@@ -213,7 +213,7 @@
             android:paddingLeft="@dimen/_8sdp"
 
             android:paddingRight="@dimen/_8sdp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_9ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -234,7 +234,7 @@
             android:paddingBottom="@dimen/_4sdp"
             android:text="@string/emergency_services"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_9ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -246,7 +246,7 @@
         android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/clEmergencyServices"></LinearLayout>
 
@@ -297,7 +297,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -318,7 +318,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/vehicle_insurance"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -329,7 +329,7 @@
         <LinearLayout
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/white"></LinearLayout>
+            android:background="@color/black"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clSpareParts"
@@ -368,7 +368,7 @@
                 android:minLines="2"
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -389,7 +389,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/spare_parts"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -404,7 +404,7 @@
         android:id="@+id/ll3"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/llInsuranceSpareParts"></LinearLayout>
 
@@ -445,7 +445,7 @@
             android:paddingLeft="@dimen/_8sdp"
 
             android:paddingRight="@dimen/_8sdp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_9ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -466,7 +466,7 @@
             android:paddingBottom="@dimen/_4sdp"
             android:text="@string/courier_services"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_9ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -479,7 +479,7 @@
         android:id="@+id/ll4"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/clCourier"></LinearLayout>
 
@@ -531,7 +531,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -552,7 +552,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/garages"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -563,7 +563,7 @@
         <LinearLayout
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/white"></LinearLayout>
+            android:background="@color/black"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCarAccessories"
@@ -601,7 +601,7 @@
                 android:minLines="2"
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -622,7 +622,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/car_accessories"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -638,7 +638,7 @@
         android:id="@+id/ll5"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/llGarageCarAccessories"></LinearLayout>
 
@@ -689,7 +689,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -710,7 +710,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/heavy_equipments"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -721,7 +721,7 @@
         <LinearLayout
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/white"></LinearLayout>
+            android:background="@color/black"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clTyreServices"
@@ -760,7 +760,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -781,7 +781,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/tyre_servicess"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -797,7 +797,7 @@
         android:id="@+id/ll6"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/llHireEuipTyreServices"></LinearLayout>
 
@@ -847,7 +847,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -868,7 +868,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/break_down_services"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -879,7 +879,7 @@
         <LinearLayout
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/white"></LinearLayout>
+            android:background="@color/black"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clRentCar"
@@ -917,7 +917,7 @@
                 android:paddingLeft="@dimen/_8sdp"
 
                 android:paddingRight="@dimen/_8sdp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -938,7 +938,7 @@
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="@string/cars_for_rent"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
