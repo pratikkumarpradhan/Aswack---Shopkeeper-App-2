@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/our_services"
-                        android:textColor="@color/orange"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -129,14 +129,14 @@
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="@color/yellow"
         android:scaleType="center"
         android:src="@drawable/ic_round_add_24"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="35dp"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/black" />
 
     <!--Floating action button for add alarm-->
     <!--Make sure that you are constraining this
@@ -146,13 +146,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/black"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/fbAdd"
         app:layout_constraintEnd_toEndOf="@+id/fbAdd"
         app:layout_constraintStart_toStartOf="@+id/fbAdd"
         app:srcCompat="@drawable/ic_call_16"
-        app:tint="@android:color/white" />
+        app:tint="@color/yellow" />
 
     <!--Action name text for the add alarm button-->
     <!--Make sure that you are constraining this Text to
@@ -166,7 +166,7 @@
         android:paddingStart="@dimen/_5sdp"
         android:paddingEnd="@dimen/_5sdp"
         android:text="@string/call_to_admin"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
         android:textSize="@dimen/_11ssp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/fbCall"
@@ -181,7 +181,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/black"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/fbCall"
         app:layout_constraintEnd_toEndOf="@+id/fbCall"
