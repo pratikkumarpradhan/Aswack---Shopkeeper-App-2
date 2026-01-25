@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
+    android:background="@color/yellow"
     tools:context=".activities.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Bigger App Icon -->
         <ImageView
             android:id="@+id/ivLoginAppIcon"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
             android:contentDescription="@string/image"
@@ -31,6 +32,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:gravity="center"
             android:text="@string/world_vehical_service"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivLoginAppIcon" />
@@ -46,6 +48,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvLoginmsg" />
 
+        <!-- Full Name -->
         <TextView
             android:id="@+id/tvFullName"
             style="@style/textview_13ssp"
@@ -55,20 +58,22 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:text="Full Name"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivLoginimg" />
 
         <EditText
             android:id="@+id/etFullName"
-            style="@style/loginedittext_13ssp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/gray"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:hint="Enter full name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFullName" />
@@ -77,12 +82,13 @@
             android:id="@+id/viewFullName"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/white"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="@id/etFullName"
             app:layout_constraintStart_toStartOf="@id/etFullName"
             app:layout_constraintTop_toBottomOf="@id/etFullName" />
 
+        <!-- Email -->
         <TextView
             android:id="@+id/tvEmail"
             style="@style/textview_13ssp"
@@ -92,20 +98,22 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:text="Email Address"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFullName" />
+            app:layout_constraintTop_toBottomOf="@id/viewFullName" />
 
         <EditText
             android:id="@+id/etEmail"
-            style="@style/loginedittext_13ssp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:textColorHint="@color/gray"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:hint="Enter email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEmail" />
@@ -114,12 +122,13 @@
             android:id="@+id/viewEmail"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/white"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="@id/etEmail"
             app:layout_constraintStart_toStartOf="@id/etEmail"
             app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
+        <!-- Mobile -->
         <TextView
             android:id="@+id/tvMobile"
             style="@style/textview_13ssp"
@@ -129,9 +138,10 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:text="@string/enter_email_phone_no"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+            app:layout_constraintTop_toBottomOf="@id/viewEmail" />
 
         <com.rilixtech.widget.countrycodepicker.CountryCodePicker
             android:id="@+id/ccp"
@@ -141,20 +151,21 @@
             app:ccp_defaultNameCode="IN"
             app:ccp_hideNameCode="true"
             app:ccp_showFlag="false"
-            app:ccp_textColor="@color/white"
+            app:ccp_textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/etMobile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/etMobile" />
 
         <EditText
             android:id="@+id/etMobile"
-            style="@style/loginedittext_13ssp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_20sdp"
             android:inputType="number"
-            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
             android:textColorHint="@color/gray"
+            android:hint="Enter mobile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ccp"
             app:layout_constraintTop_toBottomOf="@id/tvMobile" />
@@ -163,12 +174,13 @@
             android:id="@+id/viewMobile"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:background="@color/white"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="@id/etMobile"
             app:layout_constraintStart_toStartOf="@id/ccp"
             app:layout_constraintTop_toBottomOf="@id/etMobile" />
 
+        <!-- Password -->
         <TextView
             android:id="@+id/tvPassword"
             style="@style/textview_13ssp"
@@ -178,71 +190,56 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:text="@string/password"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etMobile" />
+            app:layout_constraintTop_toBottomOf="@id/viewMobile" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvPasswordLayout"
+        <EditText
+            android:id="@+id/etPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            app:boxBackgroundMode="none"
-            app:errorEnabled="true"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:padding="@dimen/_10sdp"
+            android:hint="********"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
             app:layout_constraintTop_toBottomOf="@id/tvPassword"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                style="@style/My.TextInputLayout.FilledBox.Padding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="********"
-                android:inputType="textPassword"
-                android:maxLength="16"
-                android:textAppearance="@style/popins_medium"
-                android:textColor="@color/white"
-                android:textColorHint="@color/gray"
-                android:textSize="@dimen/_13ssp"
-                android:padding="0dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <View
             android:id="@+id/viewPassword"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@color/white"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@id/tvPasswordLayout"
-            app:layout_constraintEnd_toEndOf="@id/tvPasswordLayout"
-            app:layout_constraintStart_toStartOf="@id/tvPasswordLayout" />
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/etPassword"
+            app:layout_constraintStart_toStartOf="@id/etPassword"
+            app:layout_constraintTop_toBottomOf="@id/etPassword" />
 
+        <!-- Submit Button Rounded -->
         <TextView
             android:id="@+id/tvSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
-            android:background="@drawable/lighblue"
+            android:background="@drawable/rounded_black_button"
             android:fontFamily="@font/poppins_medium"
             android:paddingStart="@dimen/_40sdp"
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_40sdp"
             android:paddingBottom="@dimen/_5sdp"
             android:text="@string/submit"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPasswordLayout" />
+            app:layout_constraintTop_toBottomOf="@id/viewPassword" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -252,8 +249,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="gone"></ProgressBar>
-
+            android:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
