@@ -84,10 +84,18 @@ class BookingListActivity : AppCompatActivity(), BookingListAdapter.ICustomListL
 
         progressBar.visibility = View.VISIBLE
 
+        val loginData = Helper().getLoginData(mContext)
         val login = Login()
-        login.seller_id = Helper().getLoginData(mContext).id
-
-        bookingListViewModel.getBookingList(login)
+        // Use id if available, otherwise use mobile number or seller_id
+        login.seller_id = loginData.id ?: loginData.seller_id ?: loginData.mobile
+        
+        // Only make API call if seller_id is not null or empty
+        if (!login.seller_id.isNullOrEmpty()) {
+            bookingListViewModel.getBookingList(login)
+        } else {
+            progressBar.visibility = View.GONE
+            Toast.makeText(mContext, "Please login again", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

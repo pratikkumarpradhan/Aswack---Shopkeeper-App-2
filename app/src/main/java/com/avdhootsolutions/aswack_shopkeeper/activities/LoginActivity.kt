@@ -76,8 +76,8 @@ class LoginActivity : AppCompatActivity() {
                 firebaseToken = it.result.toString()
                 Log.e("firebaseToken ", firebaseToken)
             }
+            }
         }
-    }
 
     private fun authenticateUser() {
         val mobileNumber = etLoginid.text.toString().trim()
@@ -130,19 +130,19 @@ class LoginActivity : AppCompatActivity() {
 
                     Helper().setLoginData(register, mContext)
 
-                    Toast.makeText(mContext, resources.getString(R.string.login_successfull), Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
+            Toast.makeText(mContext, resources.getString(R.string.login_successfull), Toast.LENGTH_SHORT).show()
+            progressBar.visibility = View.GONE
 
                     // Navigate to Home screen
-                    val i = Intent(mContext, HomeActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(i)
-                    finish()
+            val i = Intent(mContext, HomeActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            finish()
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("LoginActivity", "Error authenticating user", e)
-                progressBar.visibility = View.GONE
+            progressBar.visibility = View.GONE
                 Toast.makeText(mContext, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }

@@ -54,17 +54,33 @@ class BookingListViewModel : ViewModel() {
         val loginCallBackCall: Call<Datas> = MyApp.getInstance().getMyApi().apiGetBookingList(login)
         loginCallBackCall.enqueue(object : Callback<Datas?> {
             override fun onResponse(call: Call<Datas?>, response: Response<Datas?>) {
-                val datas: Datas = response.body()!!
-                Log.e("response of booking list", Gson().toJson(response.body()))
-                if (datas.status == true) {
+                if (response.body() != null) {
+                    val datas: Datas = response.body()!!
+                    Log.e("response of booking list", Gson().toJson(response.body()))
+                    if (datas.status == true) {
 
-                    val gson = Gson()
-                    val typeVehicleList = object : TypeToken<ArrayList<BookingList>>() {}.type
-                    bookingList =
-                        gson.fromJson(gson.toJson(datas.data), typeVehicleList)
-                    bookingListLiveData.setValue(bookingList)
+                        val gson = Gson()
+                        val typeVehicleList = object : TypeToken<ArrayList<BookingList>>() {}.type
+                        bookingList =
+                            gson.fromJson(gson.toJson(datas.data), typeVehicleList)
+                        // Ensure we always set a list, even if empty
+                        if (bookingList == null) {
+                            bookingList = ArrayList()
+                        }
+                        bookingListLiveData.setValue(bookingList)
+                    } else {
+                        // If status is false but no error message, set empty list
+                        if (datas.message.isNullOrEmpty()) {
+                            bookingList = ArrayList()
+                            bookingListLiveData.setValue(bookingList)
+                        } else {
+                            errorMessage.value = datas.message
+                        }
+                    }
                 } else {
-                    errorMessage.value = datas.message
+                    // Handle null response body
+                    bookingList = ArrayList()
+                    bookingListLiveData.setValue(bookingList)
                 }
             }
 
