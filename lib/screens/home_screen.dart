@@ -7,6 +7,8 @@ import 'login_screen.dart';
 import 'profile_screen.dart';
 import 'booking_list_screen.dart';
 import 'about_us_screen.dart';
+import 'vehicle_selection_screen.dart';
+import 'sell_vehicle_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,9 +25,29 @@ class _HomeScreenState extends State<HomeScreen> {
   void _closeDrawer() => _scaffoldKey.currentState?.closeDrawer();
 
   void _onCategoryTap(String categoryId) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Category $categoryId - Phase 2')),
-    );
+    if (categoryId == '1') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const SellVehicleListScreen(),
+        ),
+      );
+    } else if (categoryId == '2') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => VehicleSelectionScreen(
+            isSellMode: false,
+            companyId: '',
+            packageId: '',
+          ),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Category $categoryId - Coming soon')),
+      );
+    }
   }
 
   void _onLogout() async {
