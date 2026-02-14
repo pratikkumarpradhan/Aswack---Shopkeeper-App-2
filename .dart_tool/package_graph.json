@@ -7,15 +7,13 @@
       "name": "aswack_shopkeeper",
       "version": "1.0.0+1",
       "dependencies": [
-        "carousel_slider",
         "country_code_picker",
         "cupertino_icons",
         "flutter",
-        "google_maps_flutter",
+        "http",
         "image_picker",
         "shared_preferences",
-        "url_launcher",
-        "webview_flutter"
+        "url_launcher"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -24,7 +22,7 @@
     },
     {
       "name": "flutter_lints",
-      "version": "2.0.3",
+      "version": "3.0.2",
       "dependencies": [
         "lints"
       ]
@@ -62,34 +60,6 @@
       ]
     },
     {
-      "name": "webview_flutter",
-      "version": "4.13.1",
-      "dependencies": [
-        "flutter",
-        "webview_flutter_android",
-        "webview_flutter_platform_interface",
-        "webview_flutter_wkwebview"
-      ]
-    },
-    {
-      "name": "google_maps_flutter",
-      "version": "2.14.2",
-      "dependencies": [
-        "flutter",
-        "google_maps_flutter_android",
-        "google_maps_flutter_ios",
-        "google_maps_flutter_platform_interface",
-        "google_maps_flutter_web"
-      ]
-    },
-    {
-      "name": "carousel_slider",
-      "version": "5.1.2",
-      "dependencies": [
-        "flutter"
-      ]
-    },
-    {
       "name": "image_picker",
       "version": "1.2.1",
       "dependencies": [
@@ -101,6 +71,16 @@
         "image_picker_macos",
         "image_picker_platform_interface",
         "image_picker_windows"
+      ]
+    },
+    {
+      "name": "http",
+      "version": "1.6.0",
+      "dependencies": [
+        "async",
+        "http_parser",
+        "meta",
+        "web"
       ]
     },
     {
@@ -144,7 +124,7 @@
     },
     {
       "name": "lints",
-      "version": "2.1.1",
+      "version": "3.0.0",
       "dependencies": []
     },
     {
@@ -290,77 +270,6 @@
       ]
     },
     {
-      "name": "webview_flutter_wkwebview",
-      "version": "3.23.6",
-      "dependencies": [
-        "flutter",
-        "meta",
-        "path",
-        "webview_flutter_platform_interface"
-      ]
-    },
-    {
-      "name": "webview_flutter_platform_interface",
-      "version": "2.14.0",
-      "dependencies": [
-        "flutter",
-        "meta",
-        "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "webview_flutter_android",
-      "version": "4.10.11",
-      "dependencies": [
-        "flutter",
-        "meta",
-        "webview_flutter_platform_interface"
-      ]
-    },
-    {
-      "name": "google_maps_flutter_web",
-      "version": "0.5.14+3",
-      "dependencies": [
-        "collection",
-        "flutter",
-        "flutter_web_plugins",
-        "google_maps",
-        "google_maps_flutter_platform_interface",
-        "sanitize_html",
-        "stream_transform",
-        "web"
-      ]
-    },
-    {
-      "name": "google_maps_flutter_platform_interface",
-      "version": "2.14.1",
-      "dependencies": [
-        "collection",
-        "flutter",
-        "plugin_platform_interface",
-        "stream_transform"
-      ]
-    },
-    {
-      "name": "google_maps_flutter_ios",
-      "version": "2.17.3",
-      "dependencies": [
-        "flutter",
-        "google_maps_flutter_platform_interface",
-        "stream_transform"
-      ]
-    },
-    {
-      "name": "google_maps_flutter_android",
-      "version": "2.18.12",
-      "dependencies": [
-        "flutter",
-        "flutter_plugin_android_lifecycle",
-        "google_maps_flutter_platform_interface",
-        "stream_transform"
-      ]
-    },
-    {
       "name": "image_picker_windows",
       "version": "0.2.2",
       "dependencies": [
@@ -426,6 +335,29 @@
         "flutter",
         "flutter_plugin_android_lifecycle",
         "image_picker_platform_interface"
+      ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "http_parser",
+      "version": "4.1.2",
+      "dependencies": [
+        "collection",
+        "source_span",
+        "string_scanner",
+        "typed_data"
+      ]
+    },
+    {
+      "name": "async",
+      "version": "2.13.0",
+      "dependencies": [
+        "collection",
+        "meta"
       ]
     },
     {
@@ -509,14 +441,6 @@
       "dependencies": []
     },
     {
-      "name": "async",
-      "version": "2.13.0",
-      "dependencies": [
-        "collection",
-        "meta"
-      ]
-    },
-    {
       "name": "leak_tracker_testing",
       "version": "3.0.2",
       "dependencies": [
@@ -566,11 +490,6 @@
       ]
     },
     {
-      "name": "web",
-      "version": "1.1.1",
-      "dependencies": []
-    },
-    {
       "name": "flutter_web_plugins",
       "version": "0.0.0",
       "dependencies": [
@@ -582,34 +501,6 @@
       "version": "2.1.8",
       "dependencies": [
         "meta"
-      ]
-    },
-    {
-      "name": "stream_transform",
-      "version": "2.1.1",
-      "dependencies": []
-    },
-    {
-      "name": "sanitize_html",
-      "version": "2.1.0",
-      "dependencies": [
-        "html",
-        "meta"
-      ]
-    },
-    {
-      "name": "google_maps",
-      "version": "8.2.0",
-      "dependencies": [
-        "meta",
-        "web"
-      ]
-    },
-    {
-      "name": "flutter_plugin_android_lifecycle",
-      "version": "2.0.33",
-      "dependencies": [
-        "flutter"
       ]
     },
     {
@@ -629,16 +520,6 @@
         "flutter",
         "http",
         "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "http",
-      "version": "1.6.0",
-      "dependencies": [
-        "async",
-        "http_parser",
-        "meta",
-        "web"
       ]
     },
     {
@@ -671,6 +552,20 @@
       "name": "mime",
       "version": "2.0.0",
       "dependencies": []
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "version": "2.0.33",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
+      ]
     },
     {
       "name": "path_provider_windows",
@@ -716,24 +611,6 @@
       "dependencies": []
     },
     {
-      "name": "html",
-      "version": "0.15.6",
-      "dependencies": [
-        "csslib",
-        "source_span"
-      ]
-    },
-    {
-      "name": "http_parser",
-      "version": "4.1.2",
-      "dependencies": [
-        "collection",
-        "source_span",
-        "string_scanner",
-        "typed_data"
-      ]
-    },
-    {
       "name": "ffi",
       "version": "2.2.0",
       "dependencies": []
@@ -749,20 +626,6 @@
       "dependencies": [
         "meta",
         "path"
-      ]
-    },
-    {
-      "name": "csslib",
-      "version": "1.0.2",
-      "dependencies": [
-        "source_span"
-      ]
-    },
-    {
-      "name": "typed_data",
-      "version": "1.4.0",
-      "dependencies": [
-        "collection"
       ]
     }
   ],

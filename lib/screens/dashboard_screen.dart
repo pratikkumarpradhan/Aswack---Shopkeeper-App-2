@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
-import '../utils/app_text_styles.dart';
 import '../utils/helper.dart';
+import 'sell_vehicle_list_screen.dart';
+import 'category_list_screen.dart';
+import 'my_offer_list_screen.dart';
+import 'rfq_list_screen.dart';
+import 'seller_notification_screen.dart';
+import 'rating_review_screen.dart';
+import 'seller_wise_package_list_screen.dart';
+import 'chat_list_screen.dart';
+import 'order_list_screen.dart';
+import 'company_profile_screen.dart';
+import 'page_detail_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String? categoryId;
@@ -9,11 +19,11 @@ class DashboardScreen extends StatefulWidget {
   final String? packageId;
 
   const DashboardScreen({
-    Key? key,
+    super.key,
     this.categoryId,
     this.companyId,
     this.packageId,
-  }) : super(key: key);
+  });
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -31,98 +41,89 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   void _setAppTitle() {
     switch (widget.categoryId) {
-      case '1':
-        _appTitle = 'Sell Vehicle';
-        break;
-      case '3':
-        _appTitle = 'Garage';
-        break;
-      case '4':
-        _appTitle = 'Vehicle Insurance';
-        break;
-      case '5':
-        _appTitle = 'Emergency Service\'s';
-        break;
-      case '6':
-        _appTitle = 'Spare Parts';
-        break;
-      case '7':
-        _appTitle = 'Car Accessories';
-        break;
-      case '8':
-        _appTitle = 'Hire Heavy Equipment';
-        break;
-      case '9':
-        _appTitle = 'Tyre Services';
-        break;
-      case '10':
-        _appTitle = 'Break Down';
-        break;
-      case '11':
-        _appTitle = 'Rent a Car';
-        break;
-      case '12':
-        _appTitle = 'Courier';
-        break;
-      default:
-        _appTitle = 'Aswack';
+      case '1': _appTitle = 'Sell Vehicle'; break;
+      case '3': _appTitle = 'Garage'; break;
+      case '4': _appTitle = 'Vehicle Insurance'; break;
+      case '5': _appTitle = 'Emergency Service\'s'; break;
+      case '6': _appTitle = 'Spare Parts'; break;
+      case '7': _appTitle = 'Car Accessories'; break;
+      case '8': _appTitle = 'Hire Heavy Equipment'; break;
+      case '9': _appTitle = 'Tyre Services'; break;
+      case '10': _appTitle = 'Break Down'; break;
+      case '11': _appTitle = 'Rent a Car'; break;
+      case '12': _appTitle = 'Courier'; break;
+      default: _appTitle = 'Aswack';
     }
   }
 
-  void _toggleFabs() {
-    setState(() {
-      _isAllFabsVisible = !_isAllFabsVisible;
-    });
-  }
+  void _toggleFabs() => setState(() => _isAllFabsVisible = !_isAllFabsVisible);
 
   void _onMyProductClick() {
-    // TODO: Navigate based on categoryId
-    print('My Product clicked - Category: ${widget.categoryId}');
+    final cat = widget.categoryId ?? '';
+    if (cat == '1') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => SellVehicleListScreen(categoryId: cat, companyId: widget.companyId, packageId: widget.packageId)));
+    } else if (cat == '4' || cat == '8' || cat == '11') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
+        title: cat == '4' ? 'Vehicle Insurance' : cat == '8' ? 'Hire Heavy Equipment' : 'Rent a Car',
+        mainCatId: cat,
+        companyId: widget.companyId,
+        packageId: widget.packageId,
+      )));
+    } else if (cat == '6' || cat == '7') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
+        title: cat == '6' ? 'Spare Parts' : 'Car Accessories',
+        mainCatId: cat,
+        companyId: widget.companyId,
+        packageId: widget.packageId,
+      )));
+    } else if (cat == '9') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Tyre Services', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
+    } else if (cat == '3' || cat == '5' || cat == '10') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
+        title: cat == '3' ? 'Garage' : cat == '5' ? 'Emergency Service' : 'Break Down',
+        mainCatId: cat,
+        companyId: widget.companyId,
+        packageId: widget.packageId,
+      )));
+    } else if (cat == '12') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Courier', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
+    }
   }
 
   void _onMyOfferClick() {
-    // TODO: Navigate to MyOfferListScreen
-    print('My Offer clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => MyOfferListScreen(categoryId: widget.categoryId, companyId: widget.companyId, packageId: widget.packageId)));
   }
 
   void _onRFQClick() {
-    // TODO: Navigate to RFQListScreen
-    print('RFQ clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => RFQListScreen(categoryId: widget.categoryId, companyId: widget.companyId)));
   }
 
   void _onGeneratingNotificationClick() {
-    // TODO: Navigate to SellerNotificationListScreen
-    print('Generating Notification clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => SellerNotificationScreen(categoryId: widget.categoryId, companyId: widget.companyId, packageId: widget.packageId)));
   }
 
   void _onMyOrdersClick() {
-    // TODO: Navigate to OrderListScreen
-    print('My Orders clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => OrderListScreen(companyId: widget.companyId)));
   }
 
   void _onCustomerChatClick() {
-    // TODO: Navigate to ChatListScreen
-    print('Customer Chat clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => ChatListScreen(companyId: widget.companyId)));
   }
 
   void _onMyRatingClick() {
-    // TODO: Navigate to RatingAndReviewScreen
-    print('My Rating clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => RatingReviewScreen(categoryId: widget.categoryId, companyId: widget.companyId)));
   }
 
   void _onCustomiseRequirementClick() {
-    // TODO: Navigate to SellerWisePackageListScreen
-    print('Customise Requirement clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => SellerWisePackageListScreen(categoryId: widget.categoryId, companyId: widget.companyId)));
   }
 
   void _onProfileFabClick() {
-    // TODO: Navigate to CompanyProfileScreen
-    print('Profile FAB clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => CompanyProfileScreen(categoryId: widget.categoryId, companyId: widget.companyId)));
   }
 
   void _onAdminFabClick() {
-    // TODO: Show contact us dialog
-    print('Admin FAB clicked');
+    Navigator.push(context, MaterialPageRoute(builder: (_) => const PageDetailScreen(pageNo: '2', title: 'Contact Us')));
   }
 
   @override
@@ -132,321 +133,144 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.yellow,
-      body: Stack(
+      appBar: AppBar(
+        backgroundColor: AppColors.purple700,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: AppColors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(_appTitle, style: const TextStyle(color: AppColors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+      ),
+      body: Column(
         children: [
-          // App Name Header
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.all(15),
-              color: AppColors.purple700,
-              child: Text(
-                _appTitle,
-                style: const TextStyle(
-                  color: AppColors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
+          Container(
+            padding: const EdgeInsets.all(15),
+            color: AppColors.purple700,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Welcome', style: TextStyle(color: AppColors.orange, fontSize: 13)),
+                Text('Welcome $userName', style: TextStyle(color: AppColors.white, fontSize: 13)),
+                Text('We are Happy to help you grow your Business', style: TextStyle(color: AppColors.white.withValues(alpha: 0.8), fontSize: 11)),
+              ],
             ),
           ),
-
-          // Content ScrollView
-          Positioned(
-            top: 60,
-            left: 0,
-            right: 0,
-            bottom: 0,
+          Expanded(
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Welcome Section
-                    Text(
-                      'Welcome',
-                      style: TextStyle(
-                        color: AppColors.orange,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Welcome $userName',
-                      style: TextStyle(
-                        color: AppColors.purple700,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'We are Happy to help you us to grow your Business',
-                      style: TextStyle(
-                        color: AppColors.gray,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-
-                    // Grid of Dashboard Items
-                    _buildDashboardGrid(),
-                  ],
-                ),
+                padding: const EdgeInsets.all(15),
+                child: _buildDashboardGrid(),
               ),
             ),
           ),
-
-          // Floating Action Buttons
-          Positioned(
-            bottom: 16,
-            right: 16,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Admin FAB
-                if (_isAllFabsVisible)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.orange,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Text(
-                            'Admin Details',
-                            style: TextStyle(
-                              color: AppColors.white,
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        FloatingActionButton(
-                          mini: true,
-                          backgroundColor: AppColors.orange,
-                          onPressed: _onAdminFabClick,
-                          child: const Icon(
-                            Icons.home,
-                            color: AppColors.white,
-                            size: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                // Profile FAB
-                if (_isAllFabsVisible)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.orange,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Text(
-                            'Company Profile',
-                            style: TextStyle(
-                              color: AppColors.white,
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        FloatingActionButton(
-                          mini: true,
-                          backgroundColor: AppColors.orange,
-                          onPressed: _onProfileFabClick,
-                          child: const Icon(
-                            Icons.home,
-                            color: AppColors.white,
-                            size: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                // Main Add FAB
-                FloatingActionButton(
-                  backgroundColor: AppColors.purple700,
-                  onPressed: _toggleFabs,
-                  child: Icon(
-                    _isAllFabsVisible ? Icons.close : Icons.add,
-                    color: AppColors.white,
-                  ),
-                ),
-              ],
-            ),
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          if (_isAllFabsVisible) ...[
+            _buildFabRow('Company Profile', _onProfileFabClick),
+            const SizedBox(height: 8),
+            _buildFabRow('Admin Details', _onAdminFabClick),
+            const SizedBox(height: 8),
+          ],
+          FloatingActionButton(
+            backgroundColor: AppColors.purple700,
+            onPressed: _toggleFabs,
+            child: Icon(_isAllFabsVisible ? Icons.close : Icons.add, color: AppColors.white),
           ),
         ],
       ),
     );
   }
 
+  Widget _buildFabRow(String label, VoidCallback onTap) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(color: AppColors.orange, borderRadius: BorderRadius.circular(10)),
+          child: Text(label, style: const TextStyle(color: AppColors.white, fontSize: 11)),
+        ),
+        const SizedBox(width: 8),
+        FloatingActionButton(
+          mini: true,
+          backgroundColor: AppColors.orange,
+          onPressed: onTap,
+          child: const Icon(Icons.home, color: AppColors.white, size: 20),
+        ),
+      ],
+    );
+  }
+
   Widget _buildDashboardGrid() {
     return Column(
       children: [
-        // Row 1: My Product & My Offer
         Row(
           children: [
-            Expanded(
-              child: _buildDashboardItem(
-                'My Products',
-                'assets/images/ic_my_product.png',
-                _onMyProductClick,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Expanded(
-              child: _buildDashboardItem(
-                'My Offers',
-                'assets/images/ic_my_offers.png',
-                _onMyOfferClick,
-              ),
-            ),
+            Expanded(child: _buildDashboardItem('My Products', Icons.inventory_2, _onMyProductClick)),
+            const SizedBox(width: 10),
+            Expanded(child: _buildDashboardItem('My Offers', Icons.local_offer, _onMyOfferClick)),
           ],
         ),
-        const SizedBox(height: 10),
-
-        // Row 2: RFQ & Generating Notification
+        const SizedBox(height: 15),
         Row(
           children: [
-            Expanded(
-              child: _buildDashboardItem(
-                'RFQ',
-                'assets/images/ic_dash_rfq.png',
-                _onRFQClick,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Expanded(
-              child: _buildDashboardItem(
-                'Generating Notification',
-                'assets/images/ic_gen_noti.png',
-                _onGeneratingNotificationClick,
-              ),
-            ),
+            Expanded(child: _buildDashboardItem('RFQ', Icons.request_quote, _onRFQClick)),
+            const SizedBox(width: 10),
+            Expanded(child: _buildDashboardItem('Generating Notification', Icons.notifications_active, _onGeneratingNotificationClick)),
           ],
         ),
-        const SizedBox(height: 10),
-
-        // Row 3: My Orders & Customer Chat
+        const SizedBox(height: 15),
         Row(
           children: [
-            Expanded(
-              child: _buildDashboardItem(
-                'My Orders',
-                'assets/images/ic_my_orders.png',
-                _onMyOrdersClick,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Expanded(
-              child: _buildDashboardItem(
-                'Customer Chat',
-                'assets/images/ic_custom_chat.png',
-                _onCustomerChatClick,
-              ),
-            ),
+            Expanded(child: _buildDashboardItem('My Orders', Icons.shopping_cart, _onMyOrdersClick)),
+            const SizedBox(width: 10),
+            Expanded(child: _buildDashboardItem('Customer Chat', Icons.chat, _onCustomerChatClick)),
           ],
         ),
-        const SizedBox(height: 10),
-
-        // Row 4: My Rating & Customise Requirement
+        const SizedBox(height: 15),
         Row(
           children: [
-            Expanded(
-              child: _buildDashboardItem(
-                'My Rating',
-                'assets/images/ic_rating.png',
-                _onMyRatingClick,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Expanded(
-              child: _buildDashboardItem(
-                'Customise Requirement',
-                'assets/images/ic_custome_requirement.png',
-                _onCustomiseRequirementClick,
-              ),
-            ),
+            Expanded(child: _buildDashboardItem('My Rating', Icons.star, _onMyRatingClick)),
+            const SizedBox(width: 10),
+            Expanded(child: _buildDashboardItem('Customise Requirement', Icons.tune, _onCustomiseRequirementClick)),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildDashboardItem(
-    String title,
-    String imagePath,
-    VoidCallback onTap,
-  ) {
+  Widget _buildDashboardItem(String title, IconData icon, VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              imagePath,
-              width: double.infinity,
-              height: 100,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  width: double.infinity,
-                  height: 100,
-                  color: AppColors.gray,
-                  child: const Icon(Icons.image, size: 50),
-                );
-              },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.bgEditText,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.viewColor),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, size: 40, color: AppColors.purple700),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(color: AppColors.purple700, fontSize: 11, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            title,
-            style: TextStyle(
-              color: AppColors.purple700,
-              fontSize: 10,
-              fontWeight: FontWeight.w500,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

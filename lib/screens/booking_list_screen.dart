@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../utils/helper.dart';
+import 'booking_detail_screen.dart';
 
 class BookingListScreen extends StatefulWidget {
   const BookingListScreen({Key? key}) : super(key: key);
@@ -50,8 +51,12 @@ class _BookingListScreenState extends State<BookingListScreen> {
   }
 
   void _onBookingSelected(Map<String, dynamic> booking) {
-    // TODO: Navigate to BookingDetailScreen
-    print('Booking selected: ${booking['id']}');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BookingDetailScreen(bookingId: booking['id']?.toString()),
+      ),
+    );
   }
 
   @override
