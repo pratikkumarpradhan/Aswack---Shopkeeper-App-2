@@ -14,12 +14,6 @@
       "languageVersion": "3.1"
     },
     {
-      "name": "carousel_slider",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/carousel_slider-5.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "characters",
       "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/characters-1.4.0",
       "packageUri": "lib/",
@@ -48,12 +42,6 @@
       "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/cross_file-0.3.5+2",
       "packageUri": "lib/",
       "languageVersion": "3.8"
-    },
-    {
-      "name": "csslib",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/csslib-1.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
     },
     {
       "name": "cupertino_icons",
@@ -117,9 +105,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3",
+      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/flutter_lints-3.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -138,48 +126,6 @@
       "rootUri": "file:///Users/pratikkumarpradhan/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.8"
-    },
-    {
-      "name": "google_maps",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps-8.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "google_maps_flutter",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps_flutter-2.14.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.8"
-    },
-    {
-      "name": "google_maps_flutter_android",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.18.12",
-      "packageUri": "lib/",
-      "languageVersion": "3.9"
-    },
-    {
-      "name": "google_maps_flutter_ios",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.17.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.9"
-    },
-    {
-      "name": "google_maps_flutter_platform_interface",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps_flutter_platform_interface-2.14.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.8"
-    },
-    {
-      "name": "google_maps_flutter_web",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/google_maps_flutter_web-0.5.14+3",
-      "packageUri": "lib/",
-      "languageVersion": "3.7"
-    },
-    {
-      "name": "html",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/html-0.15.6",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
     },
     {
       "name": "http",
@@ -261,7 +207,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/lints-2.1.1",
+      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -324,12 +270,6 @@
       "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "sanitize_html",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences",
@@ -396,12 +336,6 @@
       "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.3"
-    },
-    {
-      "name": "stream_transform",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/stream_transform-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
     },
     {
       "name": "string_scanner",
@@ -494,30 +428,6 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "webview_flutter",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/webview_flutter-4.13.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.8"
-    },
-    {
-      "name": "webview_flutter_android",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/webview_flutter_android-4.10.11",
-      "packageUri": "lib/",
-      "languageVersion": "3.9"
-    },
-    {
-      "name": "webview_flutter_platform_interface",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.14.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.23.6",
-      "packageUri": "lib/",
-      "languageVersion": "3.9"
-    },
-    {
       "name": "xdg_directories",
       "rootUri": "file:///Users/pratikkumarpradhan/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0",
       "packageUri": "lib/",
@@ -527,7 +437,7 @@
       "name": "aswack_shopkeeper",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     }
   ],
   "generator": "pub",
