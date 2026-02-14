@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/buy_vehicle.dart';
 import '../models/sell_vehicle.dart';
+import '../models/sell_vehicle_model.dart';
 import '../models/categories.dart';
 import '../models/brands_types_models.dart';
 import '../models/years.dart';
@@ -25,24 +26,30 @@ class ApiService {
 
   static Future<ApiResponse> getVehicleCategories() async {
     try {
-      final response = await http.post(
-        Uri.parse('${baseUrl}vehicle_category.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'type': '0'}),
-      );
+      final response = await http
+          .post(
+            Uri.parse('${baseUrl}vehicle_category.php'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'type': '0'}),
+          )
+          .timeout(const Duration(seconds: 15));
       return _parseResponse(response);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());
     }
   }
 
+  static const _timeout = Duration(seconds: 15);
+
   static Future<ApiResponse> getVehicleBrandsTypesModels(String category) async {
     try {
-      final response = await http.post(
-        Uri.parse('${baseUrl}vehicle_brand.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'category': category}),
-      );
+      final response = await http
+          .post(
+            Uri.parse('${baseUrl}vehicle_brand.php'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'category': category}),
+          )
+          .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());
@@ -51,10 +58,12 @@ class ApiService {
 
   static Future<ApiResponse> getYearList() async {
     try {
-      final response = await http.get(
-        Uri.parse('${baseUrl}vehicle_year.php'),
-        headers: {'Content-Type': 'application/json'},
-      );
+      final response = await http
+          .get(
+            Uri.parse('${baseUrl}vehicle_year.php'),
+            headers: {'Content-Type': 'application/json'},
+          )
+          .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());
@@ -63,10 +72,12 @@ class ApiService {
 
   static Future<ApiResponse> getFuelList() async {
     try {
-      final response = await http.get(
-        Uri.parse('${baseUrl}vehicle_fuel.php'),
-        headers: {'Content-Type': 'application/json'},
-      );
+      final response = await http
+          .get(
+            Uri.parse('${baseUrl}vehicle_fuel.php'),
+            headers: {'Content-Type': 'application/json'},
+          )
+          .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());
@@ -88,15 +99,42 @@ class ApiService {
 
   static Future<ApiResponse> getVehicleSellList(String sellerId) async {
     try {
-      final response = await http.post(
-        Uri.parse('${baseUrl}vehicle_sell_list.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'seller_id': sellerId}),
-      );
+      final response = await http
+          .post(
+            Uri.parse('${baseUrl}vehicle_sell_list.php'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'seller_id': sellerId}),
+          )
+          .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());
     }
+  }
+
+  static Future<ApiResponse> submitSellVehicle(SellVehicleModel model) async {
+    return sellVehicleWithImages(
+      userId: model.userId ?? '0',
+      sellerCompanyId: model.sellerCompanyId ?? '',
+      userType: model.userType ?? '1',
+      vehicleCat: model.vehicleCat ?? '',
+      vehicleBrand: model.vehicleBrand ?? '',
+      vehicleType: model.vehicleType ?? '',
+      vehicleModel: model.vehicleModel ?? '',
+      vehicleYear: model.vehicleYear ?? '',
+      vehicleFuel: model.vehicleFuel ?? '',
+      transmission: model.transmission ?? '0',
+      drivenKm: model.drivenKm ?? '',
+      title: model.title ?? '',
+      owners: model.owners ?? '0',
+      contactNumber: model.contactNumber ?? '',
+      price: model.price ?? '',
+      description: model.description ?? '',
+      packagePurchasedId: model.packagePurchasedId ?? '',
+      locationLongitude: model.locationLongitude,
+      locationLatitude: model.locationLatitude,
+      imagePaths: model.imagePaths,
+    );
   }
 
   static Future<ApiResponse> sellVehicleWithImages({
@@ -165,10 +203,21 @@ class ApiService {
 
   static ApiResponse _parseResponse(http.Response response) {
     try {
-      final data = jsonDecode(response.body) as Map<String, dynamic>;
-      final status = data['status'] == true;
+      if (response.body.isEmpty) {
+        return ApiResponse(status: false, message: 'Empty response');
+      }
+      final decoded = jsonDecode(response.body);
+      if (decoded is! Map<String, dynamic>) {
+        return ApiResponse(status: false, message: 'Invalid response format');
+      }
+      final data = decoded;
+      final statusVal = data['status'];
+      final status = statusVal == true ||
+          statusVal == 1 ||
+          statusVal == '1' ||
+          statusVal == 'true';
       final message = data['message']?.toString() ?? '';
-      final responseData = data['data'];
+      final responseData = data['data'] ?? data['Data'] ?? data['result'];
       return ApiResponse(status: status, message: message, data: responseData);
     } catch (e) {
       return ApiResponse(status: false, message: e.toString());

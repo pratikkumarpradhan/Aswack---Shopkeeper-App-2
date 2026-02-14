@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
-import 'add_vehicle_screen.dart';
+import 'sell_vehicle_screen.dart';
 import 'sell_vehicle_list_screen.dart';
 import 'buy_vehicle_screen.dart';
 import '../services/api_service.dart';
@@ -41,18 +41,23 @@ class _VehicleSelectionScreenState extends State<VehicleSelectionScreen> {
       _errorMessage = null;
     });
 
-    final response = await ApiService.getVehicleCategories();
+    try {
+      final response = await ApiService.getVehicleCategories();
 
-    if (!mounted) return;
+      if (!mounted) return;
 
-    setState(() {
-      _isLoading = false;
       if (response.status) {
         _categories = response.getCategoriesList();
       } else {
         _errorMessage = response.message;
       }
-    });
+    } catch (e) {
+      _errorMessage = 'Could not load categories. Using default options.';
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   List<_CategoryItem> get _displayCategories {
@@ -79,7 +84,7 @@ class _VehicleSelectionScreenState extends State<VehicleSelectionScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => AddVehicleScreen(
+          builder: (context) => SellVehicleScreen(
             categoryId: categoryId,
             companyId: widget.companyId,
             packageId: widget.packageId,
