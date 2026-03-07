@@ -7,9 +7,34 @@ import '../models/categories.dart';
 import '../models/brands_types_models.dart';
 import '../models/years.dart';
 import '../models/fuels.dart';
+import '../models/product.dart';
 
 class ApiService {
   static const String baseUrl = 'https://admin.aswack.com/api/';
+
+  static const String _connectionErrorMsg =
+      'Connection failed. Please check your internet and try again.';
+
+  static String _messageFromError(Object e) {
+    final s = e.toString().toLowerCase();
+    if (s.contains('failed to fetch') ||
+        s.contains('clientexception') ||
+        s.contains('client expectation') ||
+        s.contains('socketexception') ||
+        s.contains('connection refused') ||
+        s.contains('connection closed') ||
+        s.contains('connection reset') ||
+        s.contains('network is unreachable') ||
+        s.contains('timeoutexception') ||
+        s.contains('handshake') ||
+        s.contains('certificate') ||
+        s.contains('failed host')) {
+      return _connectionErrorMsg;
+    }
+    return e.toString().length > 120
+        ? '${e.toString().substring(0, 120)}...'
+        : e.toString();
+  }
 
   static Future<ApiResponse> login(String mobile, String password) async {
     try {
@@ -20,7 +45,7 @@ class ApiService {
       );
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -35,7 +60,7 @@ class ApiService {
           .timeout(const Duration(seconds: 15));
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -52,7 +77,7 @@ class ApiService {
           .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -66,7 +91,7 @@ class ApiService {
           .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -80,20 +105,48 @@ class ApiService {
           .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
   static Future<ApiResponse> getBuyVehicles(BuyVehicle buyVehicle) async {
     try {
-      final response = await http.post(
-        Uri.parse('${baseUrl}vehicle_buy_list.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(buyVehicle.toJson()),
-      );
+      final response = await http
+          .post(
+            Uri.parse('${baseUrl}vehicle_buy_list.php'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode(buyVehicle.toJson()),
+          )
+          .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
+    }
+  }
+
+  static Future<ApiResponse> getProductList({
+    required String masterCategoryId,
+    required String sellerId,
+    String companySellerId = '',
+    String packagePurchasedId = '',
+  }) async {
+    try {
+      final body = <String, String>{
+        'seller_id': sellerId,
+        'company_seller_id': companySellerId,
+        'package_purchased_id': packagePurchasedId,
+        'master_category_id': masterCategoryId,
+      };
+      final response = await http
+          .post(
+            Uri.parse('${baseUrl}product_list.php'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode(body),
+          )
+          .timeout(_timeout);
+      return _parseResponse(response);
+    } catch (e) {
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -108,7 +161,7 @@ class ApiService {
           .timeout(_timeout);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -197,7 +250,7 @@ class ApiService {
       final response = await http.Response.fromStream(streamedResponse);
       return _parseResponse(response);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 
@@ -217,10 +270,15 @@ class ApiService {
           statusVal == '1' ||
           statusVal == 'true';
       final message = data['message']?.toString() ?? '';
-      final responseData = data['data'] ?? data['Data'] ?? data['result'];
+      final responseData = data['data'] ??
+          data['Data'] ??
+          data['result'] ??
+          data['vehicle_list'] ??
+          data['vehicles'] ??
+          data['list'];
       return ApiResponse(status: status, message: message, data: responseData);
     } catch (e) {
-      return ApiResponse(status: false, message: e.toString());
+      return ApiResponse(status: false, message: _messageFromError(e));
     }
   }
 }
@@ -267,9 +325,26 @@ class ApiResponse {
 
   List<SellVehicle> getSellVehicleList() {
     if (data == null) return [];
-    final list = data is List ? data : (data is Map ? [data] : []);
+    List list;
+    if (data is List) {
+      list = data as List;
+    } else if (data is Map) {
+      final map = Map<String, dynamic>.from(data as Map);
+      final raw = map['vehicles'] ?? map['vehicle_list'] ?? map['list'] ?? map['data'];
+      list = raw is List ? raw : [];
+    } else {
+      list = [];
+    }
     return list
         .map((e) => SellVehicle.fromJson(e is Map ? Map<String, dynamic>.from(e) : {}))
+        .toList();
+  }
+
+  List<Product> getProductList() {
+    if (data == null) return [];
+    final list = data is List ? data : (data is Map ? [data] : []);
+    return list
+        .map((e) => Product.fromJson(e is Map ? Map<String, dynamic>.from(e) : {}))
         .toList();
   }
 }

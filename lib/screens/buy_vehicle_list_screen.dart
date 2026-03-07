@@ -65,17 +65,38 @@ class _BuyVehicleListScreenState extends State<BuyVehicleListScreen> {
       _errorMessage = null;
     });
 
-    final response = await ApiService.getBuyVehicles(widget.buyVehicle);
+    try {
+      final response = await ApiService.getBuyVehicles(widget.buyVehicle);
 
-    setState(() {
-      _isLoading = false;
+      if (!mounted) return;
       if (response.status) {
         _vehicleList = response.getSellVehicleList();
         _filteredList = List.from(_vehicleList);
+        _errorMessage = null;
       } else {
-        _errorMessage = response.message;
+        _vehicleList = [];
+        _filteredList = [];
+        _errorMessage = response.message.isNotEmpty
+            ? response.message
+            : 'No vehicles found. Try different filters or categories.';
       }
-    });
+    } catch (e) {
+      if (mounted) {
+        _vehicleList = [];
+        _filteredList = [];
+        final err = e.toString();
+        _errorMessage = err.contains('SocketException') ||
+                err.contains('Connection') ||
+                err.contains('TimeoutException') ||
+                err.contains('Failed host')
+            ? 'Connection failed. Check internet and retry.'
+            : 'Could not load vehicles. Please retry.';
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   @override
@@ -148,8 +169,31 @@ class _BuyVehicleListScreenState extends State<BuyVehicleListScreen> {
                         ),
                       )
                     : _filteredList.isEmpty
-                        ? const Center(
-                            child: Text('No vehicles found'),
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(24),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.directions_car_outlined,
+                                      size: 64, color: AppColors.gray),
+                                  const SizedBox(height: 16),
+                                  Text(
+                                    'No vehicles found',
+                                    style: AppTextStyles.textView15ssp().copyWith(
+                                        fontWeight: FontWeight.w600),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    'Try selecting fewer filters or a different category.',
+                                    style: AppTextStyles.textView13ssp().copyWith(
+                                        color: AppColors.gray),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
                           )
                         : ListView.builder(
                             padding: const EdgeInsets.symmetric(horizontal: 12),

@@ -12,6 +12,7 @@ import 'chat_list_screen.dart';
 import 'order_list_screen.dart';
 import 'company_profile_screen.dart';
 import 'page_detail_screen.dart';
+import 'garage_service_list_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String? categoryId;
@@ -79,12 +80,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
     } else if (cat == '9') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Tyre Services', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
     } else if (cat == '3' || cat == '5' || cat == '10') {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
-        title: cat == '3' ? 'Garage' : cat == '5' ? 'Emergency Service' : 'Break Down',
-        mainCatId: cat,
-        companyId: widget.companyId,
-        packageId: widget.packageId,
-      )));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => GarageServiceListScreen(
+            title: cat == '3' ? 'Garage' : cat == '5' ? 'Emergency Service\'s' : 'Break Down',
+            mainCatId: cat,
+            companyId: widget.companyId,
+            packageId: widget.packageId,
+          ),
+        ),
+      );
     } else if (cat == '12') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Courier', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
     }
