@@ -7,8 +7,10 @@ import 'login_screen.dart';
 import 'profile_screen.dart';
 import 'booking_list_screen.dart';
 import 'about_us_screen.dart';
-import 'vehicle_selection_screen.dart';
 import 'sell_vehicle_list_screen.dart';
+import 'buy_vehicle_category_popup.dart';
+import 'buy_vehicle_screen.dart';
+import 'emergency_service_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void _openDrawer() => _scaffoldKey.currentState?.openDrawer();
   void _closeDrawer() => _scaffoldKey.currentState?.closeDrawer();
 
+  Future<void> _openBuyVehiclePopup() async {
+    final selectedId = await BuyVehicleCategoryPopup.show(context);
+    if (selectedId == null || !mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => BuyVehicleScreen(categoryId: selectedId),
+      ),
+    );
+  }
+
   void _onCategoryTap(String categoryId) {
     if (categoryId == '1') {
       Navigator.push(
@@ -33,13 +46,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     } else if (categoryId == '2') {
+      _openBuyVehiclePopup();
+    } else if (categoryId == '5') {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => VehicleSelectionScreen(
-            isSellMode: false,
-            companyId: '',
-            packageId: '',
+          builder: (_) => const EmergencyServiceListScreen(
+            title: Strings.emergency_services,
+            mainCatId: '5',
           ),
         ),
       );

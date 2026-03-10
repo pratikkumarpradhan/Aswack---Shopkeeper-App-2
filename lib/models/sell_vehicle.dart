@@ -1,3 +1,5 @@
+String? _str(dynamic v) => v?.toString();
+
 class SellVehicle {
   String? id;
   String? sellVehicleId;
@@ -69,12 +71,12 @@ class SellVehicle {
         locationLatitude = json['location_latitude']?.toString(),
         price = json['price']?.toString(),
         description = json['description']?.toString(),
-        image1 = json['image_1']?.toString(),
-        image2 = json['image_2']?.toString(),
-        image3 = json['image_3']?.toString(),
-        image4 = json['image_4']?.toString(),
-        image5 = json['image_5']?.toString(),
-        image6 = json['image_6']?.toString(),
-        image7 = json['image_7']?.toString(),
+        image1 = _str(json['image_1'] ?? json['image1']),
+        image2 = _str(json['image_2'] ?? json['image2']),
+        image3 = _str(json['image_3'] ?? json['image3']),
+        image4 = _str(json['image_4'] ?? json['image4']),
+        image5 = _str(json['image_5'] ?? json['image5']),
+        image6 = _str(json['image_6'] ?? json['image6']),
+        image7 = _str(json['image_7'] ?? json['image7']),
         createdDatetime = json['created_datetime']?.toString();
 }

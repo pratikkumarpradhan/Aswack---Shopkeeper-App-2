@@ -11,10 +11,10 @@ class BuyVehicle {
   String? transmission;
 
   Map<String, dynamic> toJson() => {
-        'category': category,
-        'user_id': userId,
-        'user_type': userType ?? '1', // 1 = SELLER
-        'vehicle_cat': vehicleCat,
+        'category': category ?? '',
+        'user_id': userId ?? '',
+        'user_type': userType ?? '1',
+        'vehicle_cat': vehicleCat ?? category ?? '',
         'vehicle_brand': vehicleBrand,
         'vehicle_type': vehicleType,
         'vehicle_model': vehicleModel,
