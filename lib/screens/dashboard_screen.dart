@@ -3,6 +3,7 @@ import '../utils/app_colors.dart';
 import '../utils/helper.dart';
 import 'sell_vehicle_list_screen.dart';
 import 'category_list_screen.dart';
+import 'emergency_service_list_screen.dart';
 import 'my_offer_list_screen.dart';
 import 'rfq_list_screen.dart';
 import 'seller_notification_screen.dart';
@@ -12,7 +13,6 @@ import 'chat_list_screen.dart';
 import 'order_list_screen.dart';
 import 'company_profile_screen.dart';
 import 'page_detail_screen.dart';
-import 'garage_service_list_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String? categoryId;
@@ -79,13 +79,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
       )));
     } else if (cat == '9') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Tyre Services', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
-    } else if (cat == '3' || cat == '5' || cat == '10') {
+    } else if (cat == '3' || cat == '10') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
+        title: cat == '3' ? 'Garage' : cat == '5' ? 'Emergency Service' : 'Break Down',
+        mainCatId: cat,
+        companyId: widget.companyId,
+        packageId: widget.packageId,
+      )));
+    } else if (cat == '5') {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => GarageServiceListScreen(
-            title: cat == '3' ? 'Garage' : cat == '5' ? 'Emergency Service\'s' : 'Break Down',
-            mainCatId: cat,
+          builder: (_) => EmergencyServiceListScreen(
+            title: 'Emergency Service\'s',
+            mainCatId: '5',
             companyId: widget.companyId,
             packageId: widget.packageId,
           ),

@@ -195,10 +195,13 @@ class _BuyVehicleListScreenState extends State<BuyVehicleListScreen> {
                               ),
                             ),
                           )
-                        : ListView.builder(
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            itemCount: _filteredList.length,
-                            itemBuilder: (context, index) {
+                        : RefreshIndicator(
+                            onRefresh: _loadVehicles,
+                            child: ListView.builder(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              itemCount: _filteredList.length,
+                              itemBuilder: (context, index) {
                               final vehicle = _filteredList[index];
                               return _VehicleListTile(
                                 vehicle: vehicle,
@@ -216,6 +219,7 @@ class _BuyVehicleListScreenState extends State<BuyVehicleListScreen> {
                               );
                             },
                           ),
+                        ),
           ),
         ],
       ),
@@ -234,7 +238,7 @@ class _VehicleListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = vehicle.image1;
+    final imageUrl = ApiService.resolveImageUrl(vehicle.image1);
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
@@ -247,7 +251,7 @@ class _VehicleListTile extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: imageUrl != null && imageUrl.isNotEmpty
+                child: imageUrl.isNotEmpty
                     ? Image.network(
                         imageUrl,
                         width: 80,

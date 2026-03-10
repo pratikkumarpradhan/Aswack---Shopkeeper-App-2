@@ -10,7 +10,7 @@ import 'about_us_screen.dart';
 import 'sell_vehicle_list_screen.dart';
 import 'buy_vehicle_category_popup.dart';
 import 'buy_vehicle_screen.dart';
-import 'dashboard_screen.dart';
+import 'emergency_service_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -51,10 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => const DashboardScreen(
-            categoryId: '5',
-            companyId: '',
-            packageId: '',
+          builder: (_) => const EmergencyServiceListScreen(
+            title: Strings.emergency_services,
+            mainCatId: '5',
           ),
         ),
       );

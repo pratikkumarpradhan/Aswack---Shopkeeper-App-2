@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../models/sell_vehicle.dart';
+import '../services/api_service.dart';
 
 class BuyVehicleDetailScreen extends StatelessWidget {
   final SellVehicle vehicle;
@@ -21,7 +22,8 @@ class BuyVehicleDetailScreen extends StatelessWidget {
       vehicle.image6,
       vehicle.image7,
     ]) {
-      if (img != null && img.isNotEmpty) list.add(img);
+      final resolved = ApiService.resolveImageUrl(img);
+      if (resolved.isNotEmpty) list.add(resolved);
     }
     return list;
   }
@@ -124,6 +126,7 @@ class BuyVehicleDetailScreen extends StatelessWidget {
                     '${vehicle.vehicleBrandName ?? ''}, ${vehicle.vehicleTypeName ?? ''}',
                   ),
                   _buildDetailRow('Fuel', vehicle.vehicleFuelName ?? '-'),
+                  _buildDetailRow('Transmission', _transmissionLabel(vehicle.transmission)),
                   _buildDetailRow('Km Driven', '${vehicle.drivenKm ?? '-'} km'),
                   _buildDetailRow('Owners', vehicle.owners ?? '-'),
                   _buildDetailRow(
@@ -174,6 +177,13 @@ class BuyVehicleDetailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _transmissionLabel(String? t) {
+    if (t == null || t.isEmpty) return '-';
+    if (t == '0') return 'Automatic';
+    if (t == '1') return 'Manual';
+    return t;
   }
 
   Widget _buildDetailRow(String label, String value) {
