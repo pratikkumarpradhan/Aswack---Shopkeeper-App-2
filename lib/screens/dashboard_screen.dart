@@ -64,12 +64,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
     if (cat == '1') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => SellVehicleListScreen(categoryId: cat, companyId: widget.companyId, packageId: widget.packageId)));
     } else if (cat == '4' || cat == '8' || cat == '11') {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
-        title: cat == '4' ? 'Vehicle Insurance' : cat == '8' ? 'Hire Heavy Equipment' : 'Rent a Car',
-        mainCatId: cat,
-        companyId: widget.companyId,
-        packageId: widget.packageId,
-      )));
+      // Use the generic emergency/garage list for Insurance, Heavy Equip, Rent Car
+      final title = cat == '4'
+          ? 'Vehicle Insurance'
+          : cat == '8'
+              ? 'Hire Heavy Equipment'
+              : 'Rent a Car';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => EmergencyServiceListScreen(
+            title: title,
+            mainCatId: cat,
+            companyId: widget.companyId,
+            packageId: widget.packageId,
+          ),
+        ),
+      );
     } else if (cat == '6' || cat == '7') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
         title: cat == '6' ? 'Spare Parts' : 'Car Accessories',
