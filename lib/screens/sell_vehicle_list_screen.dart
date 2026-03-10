@@ -5,7 +5,7 @@ import '../utils/helper.dart';
 import '../models/sell_vehicle.dart';
 import '../services/api_service.dart';
 import 'sell_vehicle_screen.dart';
-import 'buy_vehicle_detail_screen.dart';
+import 'sell_vehicle_detail_screen.dart';
 
 class SellVehicleListScreen extends StatefulWidget {
   final String? companyId;
@@ -66,9 +66,19 @@ class _SellVehicleListScreenState extends State<SellVehicleListScreen> {
         if (response.status) {
           _items = response.getSellVehicleList();
           _filteredItems = List.from(_items);
+          if (_items.isEmpty && response.message.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(response.message)),
+            );
+          }
         } else {
           _items = [];
           _filteredItems = [];
+          if (response.message.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(response.message)),
+            );
+          }
         }
         setState(() => _isLoading = false);
       }
@@ -76,6 +86,9 @@ class _SellVehicleListScreenState extends State<SellVehicleListScreen> {
       if (mounted) {
         _items = [];
         _filteredItems = [];
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not load vehicles: ${e.toString()}')),
+        );
         setState(() => _isLoading = false);
       }
     }
@@ -177,7 +190,7 @@ class _SellVehicleListScreenState extends State<SellVehicleListScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BuyVehicleDetailScreen(vehicle: vehicle),
+        builder: (context) => SellVehicleDetailScreen(vehicle: vehicle),
       ),
     );
   }
@@ -319,7 +332,7 @@ class _VehicleListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = vehicle.image1;
+    final imageUrl = ApiService.resolveImageUrl(vehicle.image1);
     return Card(
       margin: const EdgeInsets.only(bottom: 10),
       child: InkWell(
@@ -332,7 +345,7 @@ class _VehicleListTile extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: imageUrl != null && imageUrl.isNotEmpty
+                child: imageUrl.isNotEmpty
                     ? Image.network(
                         imageUrl,
                         width: 80,

@@ -50,7 +50,13 @@ class _BuyVehicleScreenState extends State<BuyVehicleScreen> {
           await ApiService.getVehicleBrandsTypesModels(widget.categoryId);
 
       if (brandsResponse.status) {
-        _brandsList = brandsResponse.getBrandsTypesModelsList();
+        try {
+          _brandsList = brandsResponse.getBrandsTypesModelsList();
+        } catch (_) {
+          _brandsList = _getFallbackBrands();
+        }
+      } else {
+        _brandsList = _getFallbackBrands();
       }
       if (_brandsList.isEmpty) {
         _brandsList = _getFallbackBrands();
@@ -88,7 +94,7 @@ class _BuyVehicleScreenState extends State<BuyVehicleScreen> {
           _updateTypesFromBrands();
           _updateModelsFromTypes();
           _isLoading = false;
-          _errorMessage = null;
+          _errorMessage = null; // we deliberately hide internal type errors
         });
       }
     }

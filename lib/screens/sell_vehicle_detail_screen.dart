@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../models/sell_vehicle.dart';
+import '../services/api_service.dart';
 
 class SellVehicleDetailScreen extends StatelessWidget {
   final SellVehicle vehicle;
@@ -21,7 +22,8 @@ class SellVehicleDetailScreen extends StatelessWidget {
       vehicle.image6,
       vehicle.image7,
     ]) {
-      if (img != null && img.isNotEmpty) list.add(img);
+      final resolved = ApiService.resolveImageUrl(img);
+      if (resolved.isNotEmpty) list.add(resolved);
     }
     return list;
   }
