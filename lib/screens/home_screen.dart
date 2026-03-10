@@ -47,6 +47,17 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     } else if (categoryId == '2') {
       _openBuyVehiclePopup();
+    } else if (categoryId == '4') {
+      // Vehicle Insurance – open insurance products (same flow as Kotlin)
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const EmergencyServiceListScreen(
+            title: Strings.vehicle_insurance,
+            mainCatId: '4',
+          ),
+        ),
+      );
     } else if (categoryId == '5') {
       Navigator.push(
         context,

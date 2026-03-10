@@ -12,6 +12,7 @@ import '../models/product_item.dart';
 import '../models/product_list_request.dart';
 import '../models/brand_type_model.dart';
 import '../models/emergency_product_request.dart';
+import '../models/insurance_product_request.dart';
 
 class ApiService {
   static const String baseUrl = 'https://admin.aswack.com/api/';
@@ -191,6 +192,48 @@ class ApiService {
       request.fields['price'] = req.price ?? '';
       request.fields['description'] = req.description ?? '';
       request.fields['specialize_in'] = req.specializeIn ?? '';
+
+      for (var i = 0; i < images.length && i < 6; i++) {
+        final file = images[i];
+        final part = await http.MultipartFile.fromPath(
+          'image${i + 1}',
+          file.path,
+        );
+        request.files.add(part);
+      }
+
+      final streamed = await request.send();
+      final response = await http.Response.fromStream(streamed);
+      return _parseResponse(response);
+    } catch (e) {
+      return ApiResponse(status: false, message: _messageFromError(e));
+    }
+  }
+
+  /// Insert insurance / heavy equipment / rent car product with vehicle details.
+  /// Mirrors AddInsuranceViewModel.apiAddInsuranceProductWithFile (Kotlin).
+  static Future<ApiResponse> insertInsuranceProduct(
+      InsuranceProductRequest req, List<File> images) async {
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('${baseUrl}insert_product.php'),
+      );
+
+      request.fields['seller_id'] = req.sellerId ?? '';
+      request.fields['seller_company_id'] = req.sellerCompanyId ?? '';
+      request.fields['package_purchased_id'] = req.packagePurchasedId ?? '';
+      request.fields['master_category_id'] = req.masterCategoryId ?? '';
+      request.fields['vehicle_category'] = req.vehicleCategoryId ?? '';
+      request.fields['vehicle_company'] = req.vehicleCompanyId ?? '';
+      request.fields['vehicle_model_type'] = req.vehicleModelTypeId ?? '';
+      request.fields['vehicle_model_name'] = req.vehicleModelId ?? '';
+      request.fields['vehicle_year'] = req.vehicleYearId ?? '';
+      request.fields['product_name'] = req.productName ?? '';
+      request.fields['serial_number'] = req.serialNumber ?? '';
+      request.fields['price'] = req.price ?? '';
+      request.fields['description'] = req.description ?? '';
+      request.fields['product_condition'] = req.productCondition ?? '';
 
       for (var i = 0; i < images.length && i < 6; i++) {
         final file = images[i];

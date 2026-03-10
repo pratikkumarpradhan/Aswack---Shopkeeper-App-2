@@ -9,6 +9,7 @@ import '../services/api_service.dart';
 import 'login_screen.dart';
 import 'emergency_service_detail_screen.dart';
 import 'add_emergency_service_screen.dart';
+import 'add_insurance_product_screen.dart';
 
 class EmergencyServiceListScreen extends StatefulWidget {
   final String title;
@@ -151,17 +152,34 @@ class _EmergencyServiceListScreenState
     final vehicleCategoryId = await _showVehicleCategorySheet();
     if (vehicleCategoryId == null || !mounted) return;
 
-    final result = await Navigator.push<bool>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => AddEmergencyServiceScreen(
-          mainCatId: widget.mainCatId,
-          vehicleCategoryId: vehicleCategoryId,
-          companyId: widget.companyId ?? '',
-          packageId: widget.packageId ?? '',
+    final bool? result;
+    if (widget.mainCatId == '4') {
+      // Vehicle Insurance – use insurance-specific add screen with full dropdowns
+      result = await Navigator.push<bool>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AddInsuranceProductScreen(
+            mainCatId: widget.mainCatId,
+            vehicleCategoryId: vehicleCategoryId,
+            companyId: widget.companyId ?? '',
+            packageId: widget.packageId ?? '',
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      // Garage / Emergency / Breakdown – existing add screen
+      result = await Navigator.push<bool>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AddEmergencyServiceScreen(
+            mainCatId: widget.mainCatId,
+            vehicleCategoryId: vehicleCategoryId,
+            companyId: widget.companyId ?? '',
+            packageId: widget.packageId ?? '',
+          ),
+        ),
+      );
+    }
 
     if (result == true && mounted) {
       _loadItems();
