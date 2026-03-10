@@ -82,18 +82,16 @@ class _SellVehicleScreenState extends State<SellVehicleScreen> {
       final brandsRes =
           await ApiService.getVehicleBrandsTypesModels(widget.categoryId);
       if (brandsRes.status) {
-        _brandsList = brandsRes.getBrandsTypesModelsList();
+        try {
+          _brandsList = brandsRes.getBrandsTypesModelsList();
+        } catch (_) {
+          _brandsList = _getFallbackBrands();
+        }
+      } else {
+        _brandsList = _getFallbackBrands();
       }
       if (_brandsList.isEmpty) {
         _brandsList = _getFallbackBrands();
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Using offline options. Connect for live data.'),
-              duration: Duration(seconds: 2),
-            ),
-          );
-        }
       }
 
       final yearsRes = await ApiService.getYearList();
@@ -117,7 +115,11 @@ class _SellVehicleScreenState extends State<SellVehicleScreen> {
       _fuelList = _getFallbackFuels();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Loaded offline options: ${e.toString()}')),
+          const SnackBar(
+            content: Text(
+              'Using offline options. Live data is currently unavailable.',
+            ),
+          ),
         );
       }
     } finally {
@@ -126,44 +128,58 @@ class _SellVehicleScreenState extends State<SellVehicleScreen> {
   }
 
   List<BrandsTypesModels> _getFallbackBrands() {
-    return [
-      BrandsTypesModels.fromJson({
-        'vehicle_brand_name': 'Maruti Suzuki',
-        'vehicle_brand_id': '1',
-        'type_list': [
-          {
-            'vehicle_type_name': 'Alto',
-            'vehicle_type_id': '1',
-            'model_list': [
-              {'vehicle_model_name': 'Alto 800', 'vehicle_model_id': '1'},
-              {'vehicle_model_name': 'Alto K10', 'vehicle_model_id': '2'},
-            ],
-          },
-          {
-            'vehicle_type_name': 'Swift',
-            'vehicle_type_id': '2',
-            'model_list': [
-              {'vehicle_model_name': 'Swift Dzire', 'vehicle_model_id': '3'},
-              {'vehicle_model_name': 'Swift', 'vehicle_model_id': '4'},
-            ],
-          },
-        ],
-      }),
-      BrandsTypesModels.fromJson({
-        'vehicle_brand_name': 'Hyundai',
-        'vehicle_brand_id': '2',
-        'type_list': [
-          {
-            'vehicle_type_name': 'i20',
-            'vehicle_type_id': '3',
-            'model_list': [
-              {'vehicle_model_name': 'i20 Elite', 'vehicle_model_id': '5'},
-              {'vehicle_model_name': 'i20 Sportz', 'vehicle_model_id': '6'},
-            ],
-          },
-        ],
-      }),
-    ];
+    // Fallback is only used when the API returns no usable brand/type/model data.
+    // Keep it category-aware so dropdowns still behave correctly offline.
+    switch (widget.categoryId) {
+      case '2': // Bike
+        return [
+          _brand('Hero', '1', typeLabel: 'Bike', models: ['Splendor', 'Passion', 'Xtreme']),
+          _brand('Honda', '2', typeLabel: 'Bike', models: ['Shine', 'Unicorn', 'CBR']),
+          _brand('Bajaj', '3', typeLabel: 'Bike', models: ['Pulsar', 'Platina', 'Avenger']),
+          _brand('TVS', '4', typeLabel: 'Bike', models: ['Apache', 'Sport', 'Raider']),
+        ];
+      case '3': // Scooter
+        return [
+          _brand('Honda', '1', typeLabel: 'Scooter', models: ['Activa', 'Dio', 'Grazia']),
+          _brand('TVS', '2', typeLabel: 'Scooter', models: ['Jupiter', 'Ntorq', 'Scooty Pep+']),
+          _brand('Suzuki', '3', typeLabel: 'Scooter', models: ['Access 125', 'Burgman', 'Avenis']),
+          _brand('Yamaha', '4', typeLabel: 'Scooter', models: ['RayZR', 'Fascino', 'Aerox 155']),
+        ];
+      case '1': // Car (default in current fallback popup)
+      default:
+        return [
+          _brand('Maruti Suzuki', '1', typeLabel: 'Car', models: ['Alto 800', 'Swift', 'Dzire']),
+          _brand('Hyundai', '2', typeLabel: 'Car', models: ['i20', 'Creta', 'Venue']),
+          _brand('Tata', '3', typeLabel: 'Car', models: ['Nexon', 'Punch', 'Tiago']),
+          _brand('Mahindra', '4', typeLabel: 'Car', models: ['Bolero', 'XUV300', 'Scorpio']),
+        ];
+    }
+  }
+
+  BrandsTypesModels _brand(
+    String name,
+    String id, {
+    required String typeLabel,
+    required List<String> models,
+  }) {
+    return BrandsTypesModels.fromJson({
+      'vehicle_brand_name': name,
+      'vehicle_brand_id': id,
+      'type_list': [
+        {
+          'vehicle_type_name': typeLabel,
+          'vehicle_type_id': id,
+          'model_list': models
+              .asMap()
+              .entries
+              .map((e) => {
+                    'vehicle_model_name': e.value,
+                    'vehicle_model_id': '${e.key + 1}',
+                  })
+              .toList(),
+        },
+      ],
+    });
   }
 
   List<Years> _getFallbackYears() {
@@ -249,13 +265,28 @@ class _SellVehicleScreenState extends State<SellVehicleScreen> {
     );
     if (source == null || !mounted) return;
 
-    final image = await _picker.pickImage(
-      source: source,
-      maxWidth: 1200,
-      imageQuality: 80,
-    );
-    if (image != null && mounted) {
-      setState(() => _imagePaths.add(image.path));
+    if (source == ImageSource.gallery) {
+      final remaining = 7 - _imagePaths.length;
+      final images = await _picker.pickMultiImage(
+        maxWidth: 1200,
+        imageQuality: 80,
+      );
+      if (images.isNotEmpty && mounted) {
+        setState(() {
+          for (final x in images.take(remaining)) {
+            _imagePaths.add(x.path);
+          }
+        });
+      }
+    } else {
+      final image = await _picker.pickImage(
+        source: source,
+        maxWidth: 1200,
+        imageQuality: 80,
+      );
+      if (image != null && mounted) {
+        setState(() => _imagePaths.add(image.path));
+      }
     }
   }
 
@@ -264,6 +295,16 @@ class _SellVehicleScreenState extends State<SellVehicleScreen> {
   }
 
   Future<void> _submit() async {
+    if (widget.companyId.trim().isEmpty || widget.packageId.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+              'Your company/package is not set. Please purchase/activate a package before adding vehicles.'),
+        ),
+      );
+      return;
+    }
+
     if (_titleController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter Ad Title')),
