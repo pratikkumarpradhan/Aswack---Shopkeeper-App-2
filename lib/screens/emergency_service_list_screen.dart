@@ -147,10 +147,9 @@ class _EmergencyServiceListScreenState
       return;
     }
 
-    // In the original app this comes from a vehicle list dialog.
-    // Here we default to category "1" (Car) and let the brand list
-    // be filtered from the server.
-    const vehicleCategoryId = '1';
+    // Let user pick basic vehicle category (Car / Bike / Scooter)
+    final vehicleCategoryId = await _showVehicleCategorySheet();
+    if (vehicleCategoryId == null || !mounted) return;
 
     final result = await Navigator.push<bool>(
       context,
@@ -167,6 +166,59 @@ class _EmergencyServiceListScreenState
     if (result == true && mounted) {
       _loadItems();
     }
+  }
+
+  Future<String?> _showVehicleCategorySheet() {
+    return showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: AppColors.yellow,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+              child: Row(
+                children: [
+                  Text(
+                    'Select vehicle type',
+                    style: AppTextStyles.textView18ssp().copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.black,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    icon: const Icon(Icons.close, color: AppColors.black),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.directions_car, color: AppColors.black),
+              title: const Text('Car'),
+              onTap: () => Navigator.pop(context, '1'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.two_wheeler, color: AppColors.black),
+              title: const Text('Bike'),
+              onTap: () => Navigator.pop(context, '2'),
+            ),
+            ListTile(
+              leading:
+                  const Icon(Icons.electric_scooter, color: AppColors.black),
+              title: const Text('Scooter'),
+              onTap: () => Navigator.pop(context, '3'),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -302,7 +354,7 @@ class _EmergencyServiceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = item.image1 ?? '';
+    final imageUrl = ApiService.resolveImageUrl(item.image1);
 
     return Card(
       margin: const EdgeInsets.only(bottom: 10),

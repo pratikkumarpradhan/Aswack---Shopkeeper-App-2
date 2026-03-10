@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../models/product_item.dart';
+import '../services/api_service.dart';
 
 class EmergencyServiceDetailScreen extends StatelessWidget {
   final ProductItem item;
@@ -20,7 +21,8 @@ class EmergencyServiceDetailScreen extends StatelessWidget {
       item.image6,
       item.image7,
     ]) {
-      if (img != null && img.isNotEmpty) list.add(img);
+      final resolved = ApiService.resolveImageUrl(img);
+      if (resolved.isNotEmpty) list.add(resolved);
     }
     return list;
   }
