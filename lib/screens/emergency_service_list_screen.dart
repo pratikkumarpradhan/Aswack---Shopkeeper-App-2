@@ -10,6 +10,8 @@ import 'login_screen.dart';
 import 'emergency_service_detail_screen.dart';
 import 'add_emergency_service_screen.dart';
 import 'add_insurance_product_screen.dart';
+import 'add_spare_parts_screen.dart';
+import 'add_car_accessories_screen.dart';
 
 class EmergencyServiceListScreen extends StatefulWidget {
   final String title;
@@ -154,12 +156,33 @@ class _EmergencyServiceListScreenState
 
     final bool? result;
     if (widget.mainCatId == '4') {
-      // Vehicle Insurance – use insurance-specific add screen with full dropdowns
       result = await Navigator.push<bool>(
         context,
         MaterialPageRoute(
           builder: (_) => AddInsuranceProductScreen(
-            mainCatId: widget.mainCatId,
+            mainCatId: '4',
+            vehicleCategoryId: vehicleCategoryId,
+            companyId: widget.companyId ?? '',
+            packageId: widget.packageId ?? '',
+          ),
+        ),
+      );
+    } else if (widget.mainCatId == '6') {
+      result = await Navigator.push<bool>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AddSparePartsScreen(
+            vehicleCategoryId: vehicleCategoryId,
+            companyId: widget.companyId ?? '',
+            packageId: widget.packageId ?? '',
+          ),
+        ),
+      );
+    } else if (widget.mainCatId == '7') {
+      result = await Navigator.push<bool>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AddCarAccessoriesScreen(
             vehicleCategoryId: vehicleCategoryId,
             companyId: widget.companyId ?? '',
             packageId: widget.packageId ?? '',

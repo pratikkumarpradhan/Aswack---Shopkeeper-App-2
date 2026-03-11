@@ -11,6 +11,7 @@ import 'sell_vehicle_list_screen.dart';
 import 'buy_vehicle_category_popup.dart';
 import 'buy_vehicle_screen.dart';
 import 'emergency_service_list_screen.dart';
+import 'spare_parts_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,6 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Strings.emergency_services,
             mainCatId: '5',
           ),
+        ),
+      );
+    } else if (categoryId == '6') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const SparePartsListScreen(),
         ),
       );
     } else {
