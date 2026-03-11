@@ -330,11 +330,21 @@ class _AddInsuranceProductScreenState extends State<AddInsuranceProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final title = widget.mainCatId == '4'
-        ? 'Add Insurance Details'
-        : widget.mainCatId == '8'
-            ? 'Add Vehicle Details'
-            : 'Add Vehicle Details';
+    final title = () {
+      switch (widget.mainCatId) {
+        case '4':
+          return 'Add Insurance Details';
+        case '6':
+          return 'Add Spare Parts Details';
+        case '7':
+          return 'Add Car Accessories Details';
+        case '8':
+        case '11':
+          return 'Add Vehicle Details';
+        default:
+          return 'Add Product Details';
+      }
+    }();
 
     return Scaffold(
       backgroundColor: AppColors.white,

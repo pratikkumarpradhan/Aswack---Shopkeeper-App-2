@@ -82,12 +82,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       );
     } else if (cat == '6' || cat == '7') {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(
-        title: cat == '6' ? 'Spare Parts' : 'Car Accessories',
-        mainCatId: cat,
-        companyId: widget.companyId,
-        packageId: widget.packageId,
-      )));
+      // Spare Parts / Car Accessories – use generic product list like Kotlin
+      final title = cat == '6' ? 'Spare Parts' : 'Car Accessories';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => EmergencyServiceListScreen(
+            title: title,
+            mainCatId: cat,
+            companyId: widget.companyId,
+            packageId: widget.packageId,
+          ),
+        ),
+      );
     } else if (cat == '9') {
       Navigator.push(context, MaterialPageRoute(builder: (_) => CategoryListScreen(title: 'Tyre Services', mainCatId: cat, companyId: widget.companyId, packageId: widget.packageId)));
     } else if (cat == '3' || cat == '10') {
